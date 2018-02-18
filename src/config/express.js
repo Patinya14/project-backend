@@ -9,5 +9,4 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// export app module 
 module.exports = app;
