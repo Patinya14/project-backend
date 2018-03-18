@@ -2,7 +2,11 @@ const Personal = require('./personal.model').Personal;
 let service = {}  
 
 service.call = () => {
-    return Personal.find()
+    return Personal.find();
+}
+
+service.find = (id) => {
+    return Personal.find({ personId: id});
 }
 
 service.create = (person) => {
