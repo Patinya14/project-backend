@@ -8,13 +8,13 @@ router.get('/personal', (req, res) => {
     })
 });
 router.post('/personal', (req, res) => {
-    service.create(req.body).then((personal) => { // req.body is all-subject data at user new entered.  
-        res.json(personal) // response data with JSON.
+    service.create(req.body).then(() => { // req.body is all-subject data at user new entered.  
+        res.json({}) // response data with JSON.
     });
 });
 router.put('/personal/:id', (req, res) => {
-    service.update(req.body, req.params.id).then((personal) => { // req.body is all-subject data at user edit. & req.params.id is ID in rows at user edit.
-        res.send(personal) // response data with JSON
+    service.update(req.body, req.params.id).then(() => { // req.body is all-subject data at user edit. & req.params.id is ID in rows at user edit.
+        res.send({}) // response data with JSON
     });
 });
 router.delete('/personal/:id', (req, res) => {

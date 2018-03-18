@@ -1,5 +1,4 @@
 const Personal = require('./personal.model').Personal;
-const mongoose = require('mongoose'); 
 let service = {}  
 
 service.call = () => {
@@ -35,6 +34,8 @@ service.update = (person, id) => {
 service.delete = (id) => {
     return Personal.findByIdAndRemove(id)
 }
+
+
 
 // export service module
 module.exports = service

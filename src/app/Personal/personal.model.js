@@ -20,7 +20,6 @@ var PersonalSchema = new Schema({
     personNumber: String,
     personFamilyHistory: String,
     personPersonalHistory: String,
-
 });
 
 var Personal = mongoose.model('personal', PersonalSchema);
