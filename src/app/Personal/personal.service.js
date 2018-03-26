@@ -9,6 +9,7 @@ service.find = (id) => {
     return Personal.find({ personId: id});
 }
 
+
 service.create = (person) => {
     person = new Personal({
         personId: person.personId,
@@ -26,7 +27,9 @@ service.create = (person) => {
         personBirthPlace: person.personBirthPlace,
         personProvince: person.personProvince,
         personAddress: person.personAddress,
-        personNumber: person.personNumber
+        personNumber: person.personNumber,
+        personFamilyHistory: person.personFamilyHistory,
+        personPersonalHistory: person.personPersonalHistory
     })
     return person.save(); 
 }

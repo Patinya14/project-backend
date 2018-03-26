@@ -23,8 +23,10 @@ router.put('/personal/:id', (req, res) => {
     });
 });
 router.delete('/personal/:id', (req, res) => {
-    service.delete(req.params.id).then(() => {
-        res.send("200")
+    service.delete(req.params.id).then((personal) => {
+        if (err) return res.send("200")
+        if (personal) return res.send('delete')
+
     });
 });
 
