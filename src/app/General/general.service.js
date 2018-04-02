@@ -8,7 +8,7 @@ service.call = () => {
 
 service.create = (gen) => {
     gen = new General({
-        genId : gen.genId,
+        person : mongoose.Types.ObjectId(gen.person),
         genDate: gen.genDate,
         genTime: gen.genTime,
         genSymptoms: gen.genSymptoms,
