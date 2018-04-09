@@ -2,7 +2,6 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema; 
 
 var PersonalSchema = new Schema({
-    person: {"type": mongoose.Schema.Types.ObjectId, "ref":"person"},
     personId: String,
     personNameTitle: String,
     personName: String,

@@ -8,8 +8,7 @@ service.call = () => {
 
 service.create = (person) => {
     person = new Personal({
-        person : mongoose.Types.ObjectId(person.person),
-        personId: person.personId,
+        personId :person.personId,
         personNameTitle: person.personNameTitle,
         personName: person.personName,
         personSurname: person.personSurname,

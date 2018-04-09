@@ -1,4 +1,4 @@
-const Personal = require('./personal.model').Personal;
+const Physical = require('./physical.model').Physical;
 let service = {}
 
 service.call = () => {
@@ -7,6 +7,15 @@ service.call = () => {
 
 service.create = (phy) => {
     phy = new Physical({
+        // personId: {"type": Physical.mongoose.Schema.Types.ObjectId, "ref":"personal"},
+        date: phy.date,
+        phyTemp: phy.phyTemp,
+        phyPulse: phy.phyPulse,
+        phyRespirationRate: phy.phyRespirationRate,
+        phyBp: phy.phyBp,
+        phyHeight: phy.phyHeight,
+        phyWeight:phy.phyWeight,
+        
 
 
 
@@ -19,7 +28,7 @@ service.update = (phy, id) => {
 }
 
 service.delete = (id) => {
-    return Personal.findByIdAndRemove(id)
+    return Physical.findByIdAndRemove(id)
 }
 
 // export service module

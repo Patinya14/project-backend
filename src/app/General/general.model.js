@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var GeneralSchema = new Schema({
-    person: {"type": mongoose.Schema.Types.ObjectId, "ref":"person"},
-    genDate: Date,
+    personId: {"type": mongoose.Schema.Types.ObjectId, "ref":"personal"},
+    date: String,
     genTime: String,
     genSymptoms: String,
     genPresentHistory: String,
