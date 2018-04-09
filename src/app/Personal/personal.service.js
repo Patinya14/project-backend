@@ -1,23 +1,20 @@
 const Personal = require('./personal.model').Personal;
+const mongoose = require('mongoose'); 
 let service = {}  
 
 service.call = () => {
-    return Personal.find();
+    return Personal.find()
 }
-
-service.find = (id) => {
-    return Personal.find({ personId: id});
-}
-
 
 service.create = (person) => {
     person = new Personal({
+        person : mongoose.Types.ObjectId(person.person),
         personId: person.personId,
         personNameTitle: person.personNameTitle,
         personName: person.personName,
         personSurname: person.personSurname,
         personGender: person.personGender,
-        personDate: person.personDate,
+        personBirth: person.personBirth,
         personMaritalStatus: person.personMaritalStatus,
         personNationality: person.personNationality,
         personCitizenship: person.personCitizenship,

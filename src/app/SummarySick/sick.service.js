@@ -1,4 +1,5 @@
 const SummarySick = require('./summarySick.model').SummarySick;
+const mongoose = require('mongoose'); 
 let service = {}  
 
 service.call = () => {
@@ -7,8 +8,11 @@ service.call = () => {
 
 service.create = (summary) => {
     summary= new SummarySick({
+        // person : mongoose.Types.ObjectId(summary.person),
          summaryDiseaseName: summarySick.summaryDiseaseName,
-         summarySymptom: summarySick.summarySymptom
+         summarySymptom: summarySick.summarySymptom,
+        //  summaryTreatmentPlan: summarySick.summaryTreatmentPlan,
+        //  summaryRemedy: summarySick.summaryRemedy,
     })
     return  summary.save(); 
 }
