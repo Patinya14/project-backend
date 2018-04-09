@@ -1,16 +1,16 @@
-import { Double } from './C:/Users/User/AppData/Local/Microsoft/TypeScript/2.6/node_modules/@types/bson';
-
 var mongoose = require('mongoose'); 
 var Schema = mongoose.Schema; 
 
 var PhysicalSchema = new Schema({
- phyId: String,
+// personId: {"type": mongoose.Schema.Types.ObjectId, "ref":"personal"},
+ date: String,
  phyTemp: String,
  phyPulse: String,
  phyRespirationRate: String,
  phyBp: String,
- phyHeight: Float32Array,
- phyWeight:Float32Array,
+ phyHeight: String,
+ phyWeight:String,
+ phyetc: String
  
 
 
