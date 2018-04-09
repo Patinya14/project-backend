@@ -1,15 +1,16 @@
 var mongoose = require('mongoose'); 
 var Schema = mongoose.Schema; 
 
-var SummarySickSchema = new Schema({
-    Date: String,
+var SummarySchema = new Schema({
+
     summaryDiseaseName: String,
     summarySymptom: String,
+  
 
 });
 
-var SummarySick = mongoose.model('summarySick', SummarySickSchema);
+var Summary = mongoose.model('summary', SummarySchema);
 
 module.exports = {
-    SummarySick
+    Summary
 };

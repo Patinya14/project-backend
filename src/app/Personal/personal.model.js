@@ -7,7 +7,7 @@ var PersonalSchema = new Schema({
     personName: String,
     personSurname: String,
     personGender: String,
-    personDate: Date,
+    personBirth: Date,
     personMaritalStatus: String,
     personNationality: String,
     personCitizenship: String,
