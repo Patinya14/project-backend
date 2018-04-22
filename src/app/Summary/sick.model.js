@@ -3,9 +3,12 @@ var Schema = mongoose.Schema;
 
 var SummarySchema = new Schema({
 
-    summaryDiseaseName: String,
+    // summaryDiseaseName: String,
+    // summarySymptom: String,
     summarySymptom: String,
-  
+    summaryProcedure: String,
+    summaryTreatment: String,
+    summaryRemedy: String ,
 
 });
 

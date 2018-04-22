@@ -9,8 +9,12 @@ service.call = () => {
 service.create = (summary) => {
     summary= new Summary({
         
-         summaryDiseaseName: summary.summaryDiseaseName,
-         summarySymptom: summary.summarySymptom,
+        //  summaryDiseaseName: summary.summaryDiseaseName,
+        //  summarySymptom: summary.summarySymptom,
+        summarySymptom: summary.summarySymptom ,
+        summaryProcedure: summary.summaryProcedure,
+        summaryTreatment:summary.summaryTreatment,
+        summaryRemedy: summary.summaryRemedy,
        
     })
     return  summary.save(); 
