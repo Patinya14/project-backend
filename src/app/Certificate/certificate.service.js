@@ -1,13 +1,15 @@
-const General = require('./certificate.model').Certificate;
-const mongoose = require('mongoose'); 
+const Certificate = require('./certificate.model').Certificate;
+const mongoose = require('mongoose');
 let service = {}  
 
 service.call = () => {
-    return certificate.find()
+    return Certificate.find()
 }
-
+service.find = (id) => {
+    return Certificate.findOne({Personal_id: id})
+}
 service.create = (cer) => {
-    cer = new Certificate({
+    cer= new Certificate({
         personId : mongoose.Types.ObjectId(cer.person),
         cerDateout: cer.cerDateout, //วันเดือนปีที่ออกใบรับรองแพทย์
         cerNameTitle: cer.cerNameTitle, //คำนำหน้า
@@ -16,19 +18,18 @@ service.create = (cer) => {
         cerDateMeet: cer.cerDateMeet, //วันเดือนปีที่รับการรักษา
         cerSymptom: cer.cerSymptom, //อาการของโรค
         cerLicensed_No: cer.cerLicensed_No, //ใบอนุญาตประกอบโรคศิลปะเลขที่
-     
-      
     })
     return cer.save(); 
 }
 
 service.update = (cer, id) => {
-    return Certificate.findByIdAndUpdate(id, cer, { new: true })
+    return Certificate.findByIdAndUpdate(id,cer, { new: true })
 }
 
 service.delete = (id) => {
     return Certificate.findByIdAndRemove(id)
 }
-
 // export service module
 module.exports = service
+
+

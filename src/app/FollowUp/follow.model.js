@@ -3,12 +3,11 @@ var Schema = mongoose.Schema;
 
 var FollowSchema = new Schema({
     personId: {"type": mongoose.Schema.Types.ObjectId, "ref":"personal"},
-    folID: String,
+    
     folName: String,
     folSurName: String,
-    folDate: Date,
+    folDate: String,
     folmytimeHour: String,
-    // folmytimeMinute: String,
     folPhysicianName: String,
     folPurpose: String,
     folduration: String,

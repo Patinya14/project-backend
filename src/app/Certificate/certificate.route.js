@@ -7,6 +7,11 @@ router.get('/certificate', (req, res) => {
         res.json(listCertificate);
     })
 });
+router.get('/certificate/:id', (req, res) => {
+    service.find(req.params.id).then((certificate) => {
+        res.json(certificate);
+    })
+});
 router.post('/certificate', (req, res) => {
     service.create(req.body).then((certificate) => { // req.body is all-subject data at user new entered.  
         res.json(certificate) // response data with JSON.
