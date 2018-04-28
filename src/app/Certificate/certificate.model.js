@@ -10,7 +10,6 @@ var CertificateSchema = new Schema({
     cerDateMeet: String, //วันเดือนปีที่รับการรักษา
     cerSymptom: String, //อาการของโรค
     cerLicensed_No: String, //ใบอนุญาตประกอบโรคศิลปะเลขที่
-
 });
 
 var Certificate = mongoose.model('certificate', CertificateSchema);
