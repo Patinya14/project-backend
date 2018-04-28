@@ -14,8 +14,8 @@ service.create = (phy) => {
         phyRespirationRate: phy.phyRespirationRate,
         phyBp: phy.phyBp,
         phyHeight: phy.phyHeight,
-        phyWeight:phy.phyWeight,
-        
+        phyWeight: phy.phyWeight,
+
 
 
 
@@ -30,6 +30,15 @@ service.update = (phy, id) => {
 service.delete = (id) => {
     return Physical.findByIdAndRemove(id)
 }
+// service.calculatorBMI = (phyWeight,phyHeight) => {
+//     public = phyweight;
+//     public = phyhight;
+//     public = sum;
+//     sum = phyweight * (pow ^ 2, phyhight);
+
+//     return sum;
+ 
+// }
 
 // export service module
 module.exports = service

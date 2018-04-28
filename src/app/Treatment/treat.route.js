@@ -1,10 +1,15 @@
 const express = require('express') // create constant value for use express libary 
 const router = express.Router() // create constant value for use Router by express libary
-const service = require('./treatment.service');
+const service = require('./treat.service');
 
 router.get('/treatment', (req, res) => {
     service.call().then((listTreatment) => {
         res.json(listTreatment);
+    })
+});
+router.get('/treatment/:id', (req, res) => {
+    service.find(req.params.id).then((treatment) => {
+        res.json(treatment);
     })
 });
 router.post('/treatment', (req, res) => {

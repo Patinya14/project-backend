@@ -8,6 +8,7 @@ router.get('/physical', (req, res) => {
     })
 });
 router.post('/physical', (req, res) => {
+   
     service.create(req.body).then((physical) => { // req.body is all-subject data at user new entered.  
         res.json(physical) // response data with JSON.
     });

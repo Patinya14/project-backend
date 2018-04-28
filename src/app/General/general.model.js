@@ -12,7 +12,7 @@ var GeneralSchema = new Schema({
 
 });
 
-var General = mongoose.model('general ', GeneralSchema);
+var General = mongoose.model('general', GeneralSchema);
 
 module.exports = {
     General
