@@ -6,6 +6,10 @@ service.call = () => {
     return Personal.find()
 }
 
+service.find = (id) => {
+    return Personal.findOne({_id: id})
+}
+
 service.create = (person) => {
     person = new Personal({
         personId :person.personId,

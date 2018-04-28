@@ -4,11 +4,14 @@ const personal = require('./app/Personal/personal.route');
 const general = require('./app/General/general.route');
 const physical = require('./app/Physical/physical.route');
 const login = require('./app/Login/login.route');
-mongoose.connect(mongoose.url, { useMongoClient: true });
+const follow = require('./app/FollowUp/follow.route');
 
+mongoose.connect(mongoose.url, { useMongoClient: true });
 app.use(personal);
 app.use(login);
 app.use(general);
-app.use(physical)
+app.use(physical);
+app.use(follow);
+
 
 app.listen(3000, () => console.log('Start server on port 3000!'))

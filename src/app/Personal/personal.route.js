@@ -8,6 +8,12 @@ router.get('/personal', (req, res) => {
     })
 });
 
+router.get('/personal/:id', (req, res) => {
+    service.find(req.params.id).then((personal) => {
+        res.json(personal);
+    })
+});
+
 router.post('/personal', (req, res) => {
     service.create(req.body).then((personal) => { // req.body is all-subject data at user new entered.  
         res.json(personal) // response data with JSON.

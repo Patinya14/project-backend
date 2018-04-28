@@ -7,6 +7,15 @@ service.call = () => {
 
 service.create = (fol) => {
     fol = new Follow({
+        // folID: fol.folID ,
+        folName: fol.folName,
+        folSurName: fol.folSurName,
+        folDate: fol.folDate,
+        folmytimeHour:fol.folmytimeHour ,
+        // folmytimeMinute: fol.folmytimeMinute,
+        folPhysicianName: fol.folPhysicianName,
+        folPurpose: fol.folPurpose,
+        folduration: fol.folduration,
         
     })
     return fol.save(); 
