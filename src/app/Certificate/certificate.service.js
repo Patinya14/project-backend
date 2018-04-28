@@ -1,19 +1,23 @@
-const Certificate = require('./certificate.model').Certificate;
+const General = require('./certificate.model').Certificate;
+const mongoose = require('mongoose'); 
 let service = {}  
 
 service.call = () => {
-    return Certificate.find()
+    return certificate.find()
 }
 
 service.create = (cer) => {
     cer = new Certificate({
-        cerDateout: cer.cerDateout,
-        cerId: cer.cerId,
-        cerName:cer,cerName,
-        cerSurName: cer.cerSurName,
-        cerPhysicianName: cer.cerPhysicianName,
-        cerDateMeet: cer. cerDateMeet,
-        cerSymptom: cer.cerSymptom
+        personId : mongoose.Types.ObjectId(cer.person),
+        cerDateout: cer.cerDateout, //วันเดือนปีที่ออกใบรับรองแพทย์
+        cerNameTitle: cer.cerNameTitle, //คำนำหน้า
+        cerPhysicianName: cer.cerPhysicianName, //ชื่อแพทย์
+        cerPhysicianSurName: cer.cerPhysicianSurName, //นามสกุลแพทย์
+        cerDateMeet: cer.cerDateMeet, //วันเดือนปีที่รับการรักษา
+        cerSymptom: cer.cerSymptom, //อาการของโรค
+        cerLicensed_No: cer.cerLicensed_No, //ใบอนุญาตประกอบโรคศิลปะเลขที่
+     
+      
     })
     return cer.save(); 
 }

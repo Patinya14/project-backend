@@ -7,12 +7,17 @@ router.get('/follow', (req, res) => {
         res.json(listFollow);
     })
 });
+router.get('/follow/:id', (req, res) => {
+    service.find(req.params.id).then((follow) => {
+        res.json(follow);
+    })
+});
 router.post('/follow', (req, res) => {
     service.create(req.body).then((follow) => { // req.body is all-subject data at user new entered.  
         res.json(follow) // response data with JSON.
     });
 });
-router.put('/personal/:id', (req, res) => {
+router.put('/follow/:id', (req, res) => {
     service.update(req.body, req.params.id).then((follow) => { // req.body is all-subject data at user edit. & req.params.id is ID in rows at user edit.
         res.send(follow) // response data with JSON
     });

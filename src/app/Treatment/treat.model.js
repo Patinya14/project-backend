@@ -1,14 +1,14 @@
-var mongoose = require('mongoose'); 
-var Schema = mongoose.Schema; 
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 var TreatmentSchema = new Schema({
-   treatDiseaseName: String,
-   treatID: String,
-   treatMent: String,
-   treatDrug: String,
-   treatDose: String,
-   treatUseDose: String,
-   treatPrice: String,
+    personId: {"type": mongoose.Schema.Types.ObjectId, "ref":"personal"},
+    treatDiseaseName: String,
+    treatDiseaseID: String,
+    treatMent: String,
+    treatProcedure:  String,
+    treatPrice: String,
+    treatBodyParth: String,
 
 });
 
