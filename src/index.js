@@ -8,6 +8,7 @@ const login = require('./app/Login/login.route');
 const follow = require('./app/FollowUp/follow.route');
 const medicine  = require('./app/Drug/drug.route');
 const certificate = require('./app/Certificate/certificate.route');
+const Summary = require('./app/Summary/sick.route');
 
 
 mongoose.connect(mongoose.url, { useMongoClient: true });
@@ -19,6 +20,7 @@ app.use(follow);
 app.use(treatment);
 app.use(medicine);
 app.use(certificate);
+app.use(Summary);
 
 
 app.listen(3000, () => console.log('Start server on port 3000!'))

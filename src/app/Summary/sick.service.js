@@ -1,4 +1,4 @@
-const Summary = require('./summary.model').SummarySick;
+const Summary = require('./sick.model').Summary;
 const mongoose = require('mongoose');
 let service = {}
 
@@ -6,11 +6,11 @@ service.call = () => {
     return Summary.find()
 }
 service.find = (id) => {
-    return Follow.findOne({summary_id: id })
+    return Summary.find({ personId: id })
 }
 service.create = (summary) => {
     summary = new Summary({
-        personId: mongoose.Types.ObjectId(summary.person),
+        personId: mongoose.Types.ObjectId(summary.personId),
         summarySymptom: summary.summarySymptom,
         summaryProcedure: summary.summaryProcedure,
         summaryTreatment: summary.summaryTreatment,
