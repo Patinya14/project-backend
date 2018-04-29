@@ -5,17 +5,17 @@ let service = {}
 service.call = () => {
     return General.find()
 }
-
+service.find = (id) => {
+    return General.find({ personId: id})
+}
 service.create = (gen) => {
     gen = new General({
-        personId : mongoose.Types.ObjectId(gen.person),
+        personId : mongoose.Types.ObjectId(gen.personId),
         genDate: gen.genDate,
         genTime: gen.genTime,
         genSymptoms: gen.genSymptoms,
         genPresentHistory: gen.genPresentHistory,
         genPastHistory: gen.genPastHistory,
-     
-      
     })
     return gen.save(); 
 }
