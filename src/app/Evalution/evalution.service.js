@@ -5,7 +5,9 @@ let service = {}
 service.call = () => {
     return Evalution.find()
 }
-
+service.find = (id) => {
+    return Evalution.findOne({Evalution_id: id})
+}
 service.create = (eva) => {
    eva = new Evalution({
         personId : mongoose.Types.ObjectId(eva.person),

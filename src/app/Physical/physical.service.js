@@ -15,7 +15,8 @@ service.create = (phy) => {
         phyBp: phy.phyBp,
         phyHeight: phy.phyHeight,
         phyWeight: phy.phyWeight,
-
+        phyetc: phy.phyetc,
+        phyBodyParth: phy.phyBodyParth,
 
 
 

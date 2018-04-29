@@ -10,8 +10,8 @@ var PhysicalSchema = new Schema({
  phyBp: String,
  phyHeight: String,
  phyWeight:String,
- phyetc: String
- 
+ phyetc: String,
+ phyBodyParth: String,
 
 
 });

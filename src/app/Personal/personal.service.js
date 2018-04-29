@@ -7,7 +7,7 @@ service.call = () => {
 }
 
 service.find = (id) => {
-    return Personal.findOne({Personal_id: id})
+    return Personal.findOne({_id: id})
 }
 
 service.create = (person) => {
