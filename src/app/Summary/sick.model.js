@@ -1,14 +1,17 @@
-var mongoose = require('mongoose'); 
-var Schema = mongoose.Schema; 
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 var SummarySchema = new Schema({
 
-    // summaryDiseaseName: String,
-    // summarySymptom: String,
+    personId: { "type": mongoose.Schema.Types.ObjectId, "ref": "personal" },
     summarySymptom: String,
     summaryProcedure: String,
     summaryTreatment: String,
-    summaryRemedy: String ,
+    summaryHerbalcompress: String, //ประคบสมุนไพร
+    summaryHerbalsteam: String, //อบสมุนไพร
+    summaryDrug: String, //จ่ายยา
+    summaryAnother: String, //อื่นๆ
+
 
 });
 

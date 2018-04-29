@@ -1,23 +1,26 @@
-const Summary = require('./summary.model').SummarySick;
-const mongoose = require('mongoose'); 
-let service = {}  
+const Summary = require('./sick.model').Summary;
+const mongoose = require('mongoose');
+let service = {}
 
 service.call = () => {
     return Summary.find()
 }
-
+service.find = (id) => {
+    return Summary.find({ personId: id })
+}
 service.create = (summary) => {
-    summary= new Summary({
-        
-        //  summaryDiseaseName: summary.summaryDiseaseName,
-        //  summarySymptom: summary.summarySymptom,
-        summarySymptom: summary.summarySymptom ,
+    summary = new Summary({
+        personId: mongoose.Types.ObjectId(summary.personId),
+        summarySymptom: summary.summarySymptom,
         summaryProcedure: summary.summaryProcedure,
-        summaryTreatment:summary.summaryTreatment,
-        summaryRemedy: summary.summaryRemedy,
-       
+        summaryTreatment: summary.summaryTreatment,
+        summaryHerbalcompress: summary.summaryHerbalcompress, //ประคบสมุนไพร
+        summaryHerbalsteam: summary.summaryHerbalsteam, //อบสมุนไพร
+        summaryDrug: summary.summaryDrug, //จ่ายยา
+        summaryAnother: summary.summaryAnother, //อื่นๆ
+
     })
-    return  summary.save(); 
+    return summary.save();
 }
 
 service.update = (summary, id) => {
