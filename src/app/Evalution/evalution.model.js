@@ -3,9 +3,9 @@ var Schema = mongoose.Schema;
 
 var EvalutionSchema = new Schema({
     personId: {"type": mongoose.Schema.Types.ObjectId, "ref":"personal"},
-    date: String,
+    evaDate: String,
     evaAfter: String,
-    
+    evaBodyParth: String,
 
 });
 

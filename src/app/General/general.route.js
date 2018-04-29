@@ -9,7 +9,6 @@ router.get('/general', (req, res) => {
 });
 router.get('/general/:id', (req, res) => {
     service.find(req.params.id).then((general) => {
-        console.log(general)
         res.json(general);
     })
 });

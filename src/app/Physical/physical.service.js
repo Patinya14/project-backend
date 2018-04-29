@@ -1,13 +1,16 @@
 const Physical = require('./physical.model').Physical;
+const mongoose = require('mongoose'); 
 let service = {}
 
 service.call = () => {
     return Physical.find()
 }
-
+service.find = (id) => {
+    return Physical.find({ personId: id})
+}
 service.create = (phy) => {
     phy = new Physical({
-        // personId: {"type": Physical.mongoose.Schema.Types.ObjectId, "ref":"personal"},
+        personId : mongoose.Types.ObjectId(phy.personId),
         date: phy.date,
         phyTemp: phy.phyTemp,
         phyPulse: phy.phyPulse,

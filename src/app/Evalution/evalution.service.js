@@ -1,4 +1,4 @@
-const  Evalution = require('./evalution.model').General;
+const  Evalution = require('./evalution.model').Evalution;
 const mongoose = require('mongoose'); 
 let service = {}  
 
@@ -6,13 +6,14 @@ service.call = () => {
     return Evalution.find()
 }
 service.find = (id) => {
-    return Evalution.findOne({Evalution_id: id})
+    return Evalution.find({ personId: id})
 }
 service.create = (eva) => {
    eva = new Evalution({
-        personId : mongoose.Types.ObjectId(eva.person),
+        personId : mongoose.Types.ObjectId(eva.personId),
         evaDate: eva.evaDate,
         evaAfter: eva.evaAfter,
+        evaBodyParth: eva.evaBodyParth,
        
      
       
