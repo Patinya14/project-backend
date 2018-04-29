@@ -7,6 +7,11 @@ router.get('/summary', (req, res) => {
         res.json(listSummary);
     })
 });
+router.get('/summary/:id', (req, res) => {
+    service.find(req.params.id).then((summary) => {
+        res.json(summary);
+    })
+});
 router.post('/summary', (req, res) => {
     service.create(req.body).then((summary) => { // req.body is all-subject data at user new entered.  
         res.json(summary) // response data with JSON.
