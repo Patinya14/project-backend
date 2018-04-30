@@ -6,11 +6,11 @@ service.call = () => {
     return Certificate.find()
 }
 service.find = (id) => {
-    return Certificate.findOne({Personal_id: id})
+    return Certificate.find({  cerPhysicianName: id})
 }
 service.create = (cer) => {
     cer= new Certificate({
-        personId : mongoose.Types.ObjectId(cer.person),
+        personId : mongoose.Types.ObjectId(cer.personId),
         cerDateout: cer.cerDateout, //วันเดือนปีที่ออกใบรับรองแพทย์
         cerNameTitle: cer.cerNameTitle, //คำนำหน้า
         cerPhysicianName: cer.cerPhysicianName, //ชื่อแพทย์
