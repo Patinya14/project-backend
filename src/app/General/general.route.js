@@ -9,10 +9,7 @@ router.get('/general', (req, res) => {
 });
 router.get('/general/:id', (req, res) => {
     service.find(req.params.id).then((general) => {
-<<<<<<< HEAD
-=======
-        
->>>>>>> 9bc14f8b6a92e8e558ed9903101a3a7be4898a27
+
         res.json(general);
     })
 });
