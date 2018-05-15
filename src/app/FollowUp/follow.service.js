@@ -16,6 +16,7 @@ service.create = (fol) => {
         folSurName: fol.folSurName,
         folDate: fol.folDate,
         folmytimeHour:fol.folmytimeHour ,
+        folmytimeMinute:fol.folmytimeMinute,
         folPhysicianName: fol.folPhysicianName,
         folPurpose: fol.folPurpose,
         folduration: fol.folduration,

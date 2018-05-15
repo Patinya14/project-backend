@@ -8,6 +8,7 @@ var FollowSchema = new Schema({
     folSurName: String,
     folDate: String,
     folmytimeHour: String,
+    folmytimeMinute: String,
     folPhysicianName: String,
     folPurpose: String,
     folduration: String,
