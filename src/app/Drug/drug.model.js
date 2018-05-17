@@ -5,10 +5,9 @@ var MedicineSchema = new Schema({
     personId: { "type": mongoose.Schema.Types.ObjectId, "ref": "personal" },
     drugId: String,
     drugName: String,
-    drugAmount: String,
-    drugUseDose: String,
+    drugPackages: String, //บรรจุภัณฑ์
     drugPrice: String,
-    drugProperties: String,
+    
 
 });
 
