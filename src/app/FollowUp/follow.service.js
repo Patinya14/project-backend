@@ -1,28 +1,25 @@
 const Follow = require('./follow.model').Follow;
 const mongoose = require('mongoose');
-let service = {}  
+let service = {}
 
 service.call = () => {
     return Follow.find()
 }
 service.find = (id) => {
-    return Follow.findOne({follow_id: id})
+    return Follow.findOne({ follow_id: id })
 }
 
 service.create = (fol) => {
     fol = new Follow({
-        personId : mongoose.Types.ObjectId(fol.person),
-        folName: fol.folName,
-        folSurName: fol.folSurName,
-        folDate: fol.folDate,
-        folmytimeHour:fol.folmytimeHour ,
-        folmytimeMinute:fol.folmytimeMinute,
-        folPhysicianName: fol.folPhysicianName,
-        folPurpose: fol.folPurpose,
-        folduration: fol.folduration,
-        
+        personId: mongoose.Types.ObjectId(fol.person),
+        folDate: fol.folDate, //วันที่นัดหมาย
+        folmytimeHour: fol.folmytimeHour,
+        folmytimeMinute: fol.folmytimeMinute,
+        folPurpose: fol.folPurpose, //จุดประสงค์
+
+
     })
-    return fol.save(); 
+    return fol.save();
 }
 
 service.update = (fol, id) => {

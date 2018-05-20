@@ -1,0 +1,44 @@
+[
+    {
+       "cerNameTitle":"นาย",
+       "cerPhysicianName":"สถาพร",
+       "cerPhysicianSurName":"บัวธรา",
+       "cerLicensed_No":"พท.ป. 1627"
+    },
+    {
+       "cerNameTitle":"นางสาว",
+       "cerPhysicianName":"พรรณภัทร",
+       "cerPhysicianSurName":"อินทฤทธิ์",
+       "cerLicensed_No":"พท.ป. 608"
+    },
+    {
+       "cerNameTitle":"นางสาว",
+       "cerPhysicianName":"วรัมพา",
+       "cerPhysicianSurName":"สุพรรณรัตน์",
+       "cerLicensed_No":"พท.ป. 622"
+    },
+    {
+       "cerNameTitle":"นางสาว",
+       "cerPhysicianName":"นุชชุดา",
+       "cerPhysicianSurName":"มารยาท",
+       "cerLicensed_No":"พท.ป. 2707"
+    },
+    {
+       "cerNameTitle":"นางสาว",
+       "cerPhysicianName":"ธนัชพร",
+       "cerPhysicianSurName":"นุตมากุล",
+       "cerLicensed_No":"พท.ป. 554"
+    },
+    {
+       "cerNameTitle":"นางสาว",
+       "cerPhysicianName":"สิริกุล",
+       "cerPhysicianSurName":"กวมทรัพย์",
+       "cerLicensed_No":"พท.ป. 2225"
+    },
+    {
+       "cerNameTitle":"นางสาว",
+       "cerPhysicianName":"ชลิยา",
+       "cerPhysicianSurName":"ใจเย็น",
+       "cerLicensed_No":"พท.ป. 699"
+    }
+ ]
