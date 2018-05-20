@@ -1,4 +1,4 @@
-const Summary = require('./sick.model').Summary;
+﻿const Summary = require('./sick.model').Summary;
 const mongoose = require('mongoose');
 let service = {}
 

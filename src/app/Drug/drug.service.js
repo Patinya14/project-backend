@@ -1,26 +1,25 @@
-const Medicine= require('./drug.model').Medicine;
-const mongoose = require('mongoose'); 
-let service = {}  
+const Medicine = require('./drug.model').Medicine;
+const mongoose = require('mongoose');
+let service = {}
 
 service.call = () => {
-    return Medicine.find()
+    return Medicine.find().sort({datefield: -1});
 }
 
 service.find = (id) => {
-    return Medicine.findOne({Personal_id: id})
+    return Medicine.findOne({ Personal_id: id })
 }
 
 service.create = (drug) => {
     drug = new Medicine({
-        personId : mongoose.Types.ObjectId(drug.person),
+        personId: mongoose.Types.ObjectId(drug.person),
         drugId: drug.drugId,
         drugName: drug.drugName,
-        drugAmount: drug.drugAmount,
-        drugUseDose: drug.drugUseDose,
+        drugPackages: drug.drugPackages,//บรรจุภัณฑ์
         drugPrice: drug.drugPrice,
-        drugProperties: drug.drugProperties,
+
     })
-    return drug.save(); 
+    return drug.save();
 }
 
 service.update = (drug, id) => {

@@ -9,9 +9,9 @@ var FollowSchema = new Schema({
     folDate: String,
     folmytimeHour: String,
     folmytimeMinute: String,
-    folPhysicianName: String,
+    folPhysicianName: String, //ชื่อเเพทย์
     folPurpose: String,
-    folduration: String,
+    folduration: String, //ช่วงเวลาการรักษา
 
 
 });
