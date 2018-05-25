@@ -17,7 +17,7 @@ service.create = (summary) => {
         summaryHerbalcompress: summary.summaryHerbalcompress, //ประคบสมุนไพร
         summaryHerbalsteam: summary.summaryHerbalsteam, //อบสมุนไพร
         summaryDrug: summary.summaryDrug, //จ่ายยา
-        summaryAnother: summary.summaryAnother, //อื่นๆ
+        summaryUnit: summary.summaryUnit, //อื่นๆ
 
     })
     return summary.save();
