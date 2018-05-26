@@ -70,4 +70,6 @@ router.delete('/personal/:id', (req, res) => {
     });
 });
 
+
+
 module.exports = router

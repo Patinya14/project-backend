@@ -4,15 +4,11 @@ var Schema = mongoose.Schema;
 var FollowSchema = new Schema({
     personId: {"type": mongoose.Schema.Types.ObjectId, "ref":"personal"},
     
-    folName: String,
-    folSurName: String,
-    folDate: String,
-    folmytimeHour: String,
+    folDate: String, //วันที่นัดหมาย
+    folmytimeHour: String, 
     folmytimeMinute: String,
-    folPhysicianName: String, //ชื่อเเพทย์
-    folPurpose: String,
-    folduration: String, //ช่วงเวลาการรักษา
-
+    folPurpose: String, //จุดประสงค์
+    
 
 });
 

@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 let service = {}  
 
 service.call = () => {
-    return Certificate.find()
+    return Certificate.find().sort({datefield: -1});
 }
 service.find = (id) => {
     return Certificate.find({  cerPhysicianName: id})
@@ -11,12 +11,12 @@ service.find = (id) => {
 service.create = (cer) => {
     cer= new Certificate({
         personId : mongoose.Types.ObjectId(cer.personId),
-        cerDateout: cer.cerDateout, //วันเดือนปีที่ออกใบรับรองแพทย์
+        // cerDateout: cer.cerDateout, //วันเดือนปีที่ออกใบรับรองแพทย์
         cerNameTitle: cer.cerNameTitle, //คำนำหน้า
         cerPhysicianName: cer.cerPhysicianName, //ชื่อแพทย์
         cerPhysicianSurName: cer.cerPhysicianSurName, //นามสกุลแพทย์
-        cerDateMeet: cer.cerDateMeet, //วันเดือนปีที่รับการรักษา
-        cerSymptom: cer.cerSymptom, //อาการของโรค
+        // cerDateMeet: cer.cerDateMeet, //วันเดือนปีที่รับการรักษา
+        // cerSymptom: cer.cerSymptom, //อาการของโรค
         cerLicensed_No: cer.cerLicensed_No, //ใบอนุญาตประกอบโรคศิลปะเลขที่
     })
     return cer.save(); 
