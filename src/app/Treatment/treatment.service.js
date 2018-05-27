@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 let service = {}
 
 service.call = () => {
-    return Treatment.find().sort({ datefield: -1 });
+    return Treatment.find().sort({_id: -1});
 }
 service.find = (id) => {
     return Treatment.findOne({ personal_id: id })
