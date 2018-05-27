@@ -10,7 +10,7 @@ var SummarySchema = new Schema({
     summaryHerbalcompress: String, //ประคบสมุนไพร
     summaryHerbalsteam: String, //อบสมุนไพร
     summaryDrug: String, //จ่ายยา
-    summaryAnother: String, //อื่นๆ
+    summaryUnit: String, //อื่นๆ
 
 
 });

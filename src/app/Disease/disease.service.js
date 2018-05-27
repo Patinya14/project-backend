@@ -5,9 +5,9 @@ let service = {}
 service.call = () => {
     return Disease.find().sort({datefield: -1});
 }
-service.find = (id) => {
-    return Disease.findOne({personal_id: id})
-}
+// service.find = (id) => {
+//     return Disease.findOne({personal_id: id})
+// }
 service.create = (dis) => {
     dis = new Disease({
         disName: dis.disName,

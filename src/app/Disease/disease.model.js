@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var DiseaseSchema = new Schema({
-    personId: { "type": mongoose.Schema.Types.ObjectId, "ref": "personal" },
+    // personId: { "type": mongoose.Schema.Types.ObjectId, "ref": "personal" },
     disName: String,
     disID: String, //รหัสโรค
     disProcedure: String,
