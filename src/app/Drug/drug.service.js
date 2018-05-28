@@ -4,13 +4,11 @@ let service = {}
 
 service.call = () => {
 
-    return Medicine.find().sort({datefield: -1});
-
+    return Medicine.find().sort({_id: -1});
 }
-
-service.find = (id) => {
-    return Medicine.findOne({ Personal_id: id })
-}
+// service.find = (id) => {
+//     return Medicine.findOne({ Personal_id: id })
+// }
 
 service.create = (drug) => {
     drug = new Medicine({
@@ -31,8 +29,6 @@ service.update = (drug, id) => {
 service.delete = (id) => {
     return Medicine.findByIdAndRemove(id)
 }
-
-
 
 // export service module
 module.exports = service

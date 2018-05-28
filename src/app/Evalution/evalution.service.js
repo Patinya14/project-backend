@@ -3,18 +3,18 @@ const mongoose = require('mongoose');
 let service = {}  
 
 service.call = () => {
-    return Evalution.find()
+    return Evalution.find().sort({_id: -1});
 }
-service.find = (id) => {
-    return Evalution.find({ personId: id})
-}
+// service.find = (id) => {
+//     return Evalution.find({ personId: id})
+// }
 service.create = (eva) => {
    eva = new Evalution({
         personId : mongoose.Types.ObjectId(eva.personId),
         evaDate: eva.evaDate,
         evaAfter: eva.evaAfter,
         evaBodyParth: eva.evaBodyParth,
-       
+        evaLevel: eva.evaLevel,
      
       
     })

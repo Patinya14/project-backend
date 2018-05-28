@@ -6,7 +6,7 @@ var EvalutionSchema = new Schema({
     evaDate: String,
     evaAfter: String,
     evaBodyParth: String,
-
+    evaLevel: String,
 });
 
 var Evalution= mongoose.model('evalution ', EvalutionSchema);

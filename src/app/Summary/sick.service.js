@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 let service = {}
 
 service.call = () => {
-    return Summary.find()
+    return Summary.find().sort({_id: -1});
 }
-service.find = (id) => {
-    return Summary.find({ personId: id })
-}
+// service.find = (id) => {
+//     return Summary.find({ personId: id })
+// }
 service.create = (summary) => {
     summary = new Summary({
         personId: mongoose.Types.ObjectId(summary.personId),

@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 let service = {}  
 
 service.call = () => {
-    return Certificate.find().sort({datefield: -1});
+    return Certificate.find().sort({_id: -1});
 }
-service.find = (id) => {
-    return Certificate.find({  cerPhysicianName: id})
-}
+// service.find = (id) => {
+//     return Certificate.find({  cerPhysicianName: id})
+// }
 service.create = (cer) => {
     cer= new Certificate({
         personId : mongoose.Types.ObjectId(cer.personId),

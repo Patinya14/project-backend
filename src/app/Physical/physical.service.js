@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 let service = {}
 
 service.call = () => {
-    return Physical.find()
+    return Physical.find().sort({_id: -1});
 }
-service.find = (id) => {
-    return Physical.find({ personId: id})
-}
+// service.find = (id) => {
+//     return Physical.find({ personId: id})
+// }
 service.create = (phy) => {
     phy = new Physical({
         personId : mongoose.Types.ObjectId(phy.personId),
@@ -20,6 +20,7 @@ service.create = (phy) => {
         phyWeight: phy.phyWeight,
         phyetc: phy.phyetc,
         phyBodyParth: phy.phyBodyParth,
+        phyLevel: phy.phyLevel,
 
 
 

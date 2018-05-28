@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 let service = {}
 
 service.call = () => {
-    return Follow.find()
+    return Follow.find().sort({_id: -1});
 }
-service.find = (id) => {
-    return Follow.findOne({ follow_id: id })
-}
+// service.find = (id) => {
+//     return Follow.findOne({ follow_id: id })
+// }
 
 service.create = (fol) => {
     fol = new Follow({
