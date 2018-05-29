@@ -11,7 +11,7 @@ var SummarySchema = new Schema({
     summaryHerbalsteam: String, //อบสมุนไพร
     summaryDrug: String, //จ่ายยา
     summaryUnit: String, //อื่นๆ
-
+    summaryDuration: String,//ช่วงเวลาการรักษา
 
 });
 

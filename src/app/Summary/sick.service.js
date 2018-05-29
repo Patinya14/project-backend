@@ -18,7 +18,7 @@ service.create = (summary) => {
         summaryHerbalsteam: summary.summaryHerbalsteam, //อบสมุนไพร
         summaryDrug: summary.summaryDrug, //จ่ายยา
         summaryUnit: summary.summaryUnit, //อื่นๆ
-
+        summaryDuration: summary.summaryDuration, //ช่วงเวลา
     })
     return summary.save();
 }
