@@ -7,7 +7,7 @@ var MedicineSchema = new Schema({
     drugName: String,
     drugPackages: String, //บรรจุภัณฑ์
     drugPrice: String,
-    
+   
 
 });
 

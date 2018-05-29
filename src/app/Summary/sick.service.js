@@ -11,8 +11,8 @@ service.call = () => {
 service.create = (summary) => {
     summary = new Summary({
         personId: mongoose.Types.ObjectId(summary.personId),
-        summarySymptom: summary.summarySymptom,
-        summaryProcedure: summary.summaryProcedure,
+        summarySymptom: summary.summarySymptom,//อาการโรค
+        summaryProcedure: summary.summaryProcedure,//หัตถการ
         summaryTreatment: summary.summaryTreatment,
         summaryHerbalcompress: summary.summaryHerbalcompress, //ประคบสมุนไพร
         summaryHerbalsteam: summary.summaryHerbalsteam, //อบสมุนไพร
