@@ -17,7 +17,7 @@ service.create = (drug) => {
         drugName: drug.drugName,
         drugPackages: drug.drugPackages,//บรรจุภัณฑ์
         drugPrice: drug.drugPrice,
-        
+        drugUnit: drug.drugUnit,
 
     })
     return drug.save();
