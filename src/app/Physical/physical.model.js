@@ -10,7 +10,6 @@ personId: {"type": mongoose.Schema.Types.ObjectId, "ref":"personal"},
  phyBp: String,
  phyHeight: String,
  phyWeight:String,
- phyetc: String,
  phyBodyParth: String,
  phyLevel: String,
 
