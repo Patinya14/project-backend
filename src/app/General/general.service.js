@@ -1,23 +1,25 @@
 const General = require('./general.model').General;
-const mongoose = require('mongoose'); 
-let service = {}  
+const mongoose = require('mongoose');
+let service = {}
 
 service.call = () => {
-    return General.find().sort({_id: -1});
+    return General.find().sort({ _id: -1 });
 }
-// service.find = (id) => {   return General.find({ personId: id})
-// }
+service.find = (id) => {
+    return General.find({ personId: id }).sort({ _id: -1 })
+}
 
 service.create = (gen) => {
-    gen = new General({
-        personId : mongoose.Types.ObjectId(gen.personId),
+    console.log(gen.personId)
+    newgen = new General({
+        personId: mongoose.Types.ObjectId(gen.personId),
         genDate: gen.genDate,
         genTime: gen.genTime,
         genSymptoms: gen.genSymptoms,
         genPresentHistory: gen.genPresentHistory,
         genPastHistory: gen.genPastHistory,
     })
-    return gen.save(); 
+    return newgen.save();
 }
 
 service.update = (gen, id) => {

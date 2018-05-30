@@ -5,9 +5,9 @@ let service = {}
 service.call = () => {
     return Evalution.find().sort({_id: -1});
 }
-// service.find = (id) => {
-//     return Evalution.find({ personId: id})
-// }
+service.find = (id) => {
+    return Evalution.find({ personId: id}).sort({ _id: -1 });
+}
 service.create = (eva) => {
    eva = new Evalution({
         personId : mongoose.Types.ObjectId(eva.personId),
