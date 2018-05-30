@@ -22,11 +22,11 @@ service.create = (eva) => {
 }
 
 service.update = (eva, id) => {
-    return evalution.findByIdAndUpdate(id, eva, { new: true })
+    return Evalution.findByIdAndUpdate(id, eva, { new: true })
 }
 
 service.delete = (id) => {
-    return evalution.findByIdAndRemove(id)
+    return Evalution.findByIdAndRemove(id)
 }
 
 // export service module
