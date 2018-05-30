@@ -5,11 +5,11 @@ let service = {}
 service.call = () => {
     return Physical.find().sort({_id: -1});
 }
-// service.find = (id) => {
-//     return Physical.find({ personId: id})
-// }
+service.find = (id) => {
+    return Physical.find({personId: id}).sort({_id: -1})
+}
 service.create = (phy) => {
-    phy = new Physical({
+    newphy = new Physical({
         personId : mongoose.Types.ObjectId(phy.personId),
         date: phy.date,
         phyTemp: phy.phyTemp,
@@ -21,11 +21,8 @@ service.create = (phy) => {
         phyetc: phy.phyetc,
         phyBodyParth: phy.phyBodyParth,
         phyLevel: phy.phyLevel,
-
-
-
     })
-    return phy.save();
+    return newphy.save();
 }
 
 service.update = (phy, id) => {
