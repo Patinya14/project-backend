@@ -10,7 +10,7 @@ const follow = require('./app/FollowUp/follow.route');
 const medicine  = require('./app/Drug/drug.route');
 const certificate = require('./app/Certificate/certificate.route');
 const evalution  = require('./app/Evalution/evalution.route');
-
+// const summary = require('./app/Summary/summary.route');
 
 
 
@@ -25,7 +25,7 @@ app.use(Disease);
 app.use(medicine);
 app.use(certificate);
 app.use(evalution);
-
+// app.use(summary);
 
 
 
