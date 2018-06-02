@@ -6,16 +6,12 @@ service.call = () => {
     return Follow.find().sort({_id: -1});
 }
 service.find = (id) => {
-    return Follow.findOne({ follow_id: id })
+    return Follow.find({ personId: id })
 }
 
 service.create = (fol) => {
     fol = new Follow({
         personId: mongoose.Types.ObjectId(fol.person),
-        // personId :person.personId,
-        // personNameTitle: fol.personNameTitle,
-        // personName: fol.personName,
-        // personSurname: fol.personSurname,
         folDate: fol.folDate, //วันที่นัดหมาย
         folmytimeHour: fol.folmytimeHour,
         folmytimeMinute: fol.folmytimeMinute,
