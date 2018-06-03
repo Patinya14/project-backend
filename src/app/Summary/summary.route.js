@@ -1,14 +1,14 @@
-// const express = require('express') // create constant value for use express libary 
-// const router = express.Router() // create constant value for use Router by express libary
-// const disease = require('./../Disease/disease.service');
-// const treatment = require('./../Treatment/treatment.service');
-// const drug = require('./../Drug/drug.service');
+const express = require('express') // create constant value for use express libary 
+const router = express.Router() // create constant value for use Router by express libary
+const disease = require('./../Disease/disease.service');
+const treatment = require('./../Treatment/treatment.service');
+const drug = require('./../Drug/drug.service');
 
-// router.get('/summary/:id', (req, res) => {
-//     disease.find(req.params.id);
-//     treatment.find(req.params.id);
-//     drug.find(req.params.id);
-// });
+router.get('/summary/:id', (req, res) => {
+    disease.find(req.params.id).then(data => console.log(data))
+    // treatment.find(req.params.id);
+    // drug.find(req.params.id);
+});
 // router.post('/summary', (req, res) => {
 //     service.create(req.body).then((summary) => { // req.body is all-subject data at user new entered.  
 //         res.json(summary) // response data with JSON.
@@ -25,4 +25,4 @@
 //     });
 // });
 
-// module.exports = router
+module.exports = router

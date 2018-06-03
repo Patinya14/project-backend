@@ -13,6 +13,8 @@ service.call = () => {
 service.create = (drug) => {
     drug = new Medicine({
         personId: mongoose.Types.ObjectId(drug.person),
+        date: drud.date,
+        time: drud.time,
         drugId: drug.drugId,
         drugName: drug.drugName,
         drugPackages: drug.drugPackages,//บรรจุภัณฑ์

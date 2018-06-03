@@ -12,6 +12,8 @@ service.create = (phy) => {
     newphy = new Physical({
         personId : mongoose.Types.ObjectId(phy.personId),
         date: phy.date,
+        time:phy.time,
+        phyTime: phy.phyTime,
         phyTemp: phy.phyTemp,
         phyPulse: phy.phyPulse,
         phyRespirationRate: phy.phyRespirationRate,
