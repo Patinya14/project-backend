@@ -10,6 +10,8 @@ service.find = (id) => {
 }
 service.create = (dis) => {
     dis = new Disease({
+        date: dis.date,
+        time: dis.time,
         disName: dis.disName,
         disID:  dis.disID,//รหัสโรค
         disProcedure: dis.disProcedure,

@@ -10,6 +10,8 @@ service.call = () => {
 // }
 service.create = (treat) => {
     treat = new Treatment({
+        date: treat.date,
+        time: treat.time,
         treatID: treat.treatID, //รหัสวิธีการรักษา
         treatMents: treat.treatMents, //วิธีการรักษา
         treatInTime: treat.treatInTime, //ในเวลา

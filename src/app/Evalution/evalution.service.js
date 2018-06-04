@@ -1,4 +1,4 @@
-const  Evalution = require('./evalution.model').Evalution;
+const Evalution = require('./evalution.model').Evalution;
 const mongoose = require('mongoose'); 
 let service = {}  
 
@@ -11,7 +11,8 @@ service.find = (id) => {
 service.create = (eva) => {
    eva = new Evalution({
         personId : mongoose.Types.ObjectId(eva.personId),
-        evaDate: eva.evaDate,
+        date: eva.date,
+        time: eva.time,
         evaAfter: eva.evaAfter,
         evaBodyParth: eva.evaBodyParth,
         evaLevel: eva.evaLevel,
@@ -22,11 +23,11 @@ service.create = (eva) => {
 }
 
 service.update = (eva, id) => {
-    return evalution.findByIdAndUpdate(id, eva, { new: true })
+    return Evalution.findByIdAndUpdate(id, eva, { new: true })
 }
 
 service.delete = (id) => {
-    return evalution.findByIdAndRemove(id)
+    return Evalution.findByIdAndRemove(id)
 }
 
 // export service module

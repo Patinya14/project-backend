@@ -12,8 +12,8 @@ service.find = (id) => {
 service.create = (gen) => {
     newgen = new General({
         personId: mongoose.Types.ObjectId(gen.personId),
-        genDate: gen.genDate,
-        genTime: gen.genTime,
+        date: gen.date,
+        time: gen.time,
         genSymptoms: gen.genSymptoms,
         genPresentHistory: gen.genPresentHistory,
         genPastHistory: gen.genPastHistory,

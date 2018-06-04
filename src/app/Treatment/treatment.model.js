@@ -3,7 +3,8 @@ var Schema = mongoose.Schema;
 
 var TreatmentSchema = new Schema({
     personId: { "type": mongoose.Schema.Types.ObjectId, "ref": "personal" },
-
+    date: String,
+    time:String,
     treatID: String, //รหัสวิธีการรักษา
     treatMents: String, //วิธีการรักษา
     treatInTime: String, //ในเวลา
