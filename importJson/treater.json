@@ -1,44 +1,44 @@
 [
     {
-       "cerNameTitle":"นาย",
-       "cerPhysicianName":"สถาพร",
-       "cerPhysicianSurName":"บัวธรา",
-       "cerLicensed_No":"พท.ป. 1627"
+       "treNameTitle":"นาย",
+       "trePhysicianName":"สถาพร",
+       "trePhysicianSurName":"บัวธรา",
+       "treLicensed_No":"พท.ป. 1627"
     },
     {
-       "cerNameTitle":"นางสาว",
-       "cerPhysicianName":"พรรณภัทร",
-       "cerPhysicianSurName":"อินทฤทธิ์",
-       "cerLicensed_No":"พท.ป. 608"
+       "treNameTitle":"นางสาว",
+       "trePhysicianName":"พรรณภัทร",
+       "trePhysicianSurName":"อินทฤทธิ์",
+       "treLicensed_No":"พท.ป. 608"
     },
     {
-       "cerNameTitle":"นางสาว",
-       "cerPhysicianName":"วรัมพา",
-       "cerPhysicianSurName":"สุพรรณรัตน์",
-       "cerLicensed_No":"พท.ป. 622"
+       "treNameTitle":"นางสาว",
+       "trePhysicianName":"วรัมพา",
+       "trePhysicianSurName":"สุพรรณรัตน์",
+       "treLicensed_No":"พท.ป. 622"
     },
     {
-       "cerNameTitle":"นางสาว",
-       "cerPhysicianName":"นุชชุดา",
-       "cerPhysicianSurName":"มารยาท",
-       "cerLicensed_No":"พท.ป. 2707"
+       "treNameTitle":"นางสาว",
+       "trePhysicianName":"นุชชุดา",
+       "trePhysicianSurName":"มารยาท",
+       "treLicensed_No":"พท.ป. 2707"
     },
     {
-       "cerNameTitle":"นางสาว",
-       "cerPhysicianName":"ธนัชพร",
-       "cerPhysicianSurName":"นุตมากุล",
-       "cerLicensed_No":"พท.ป. 554"
+       "treNameTitle":"นางสาว",
+       "trePhysicianName":"ธนัชพร",
+       "trePhysicianSurName":"นุตมากุล",
+       "treLicensed_No":"พท.ป. 554"
     },
     {
-       "cerNameTitle":"นางสาว",
-       "cerPhysicianName":"สิริกุล",
-       "cerPhysicianSurName":"กวมทรัพย์",
-       "cerLicensed_No":"พท.ป. 2225"
+       "treNameTitle":"นางสาว",
+       "trePhysicianName":"สิริกุล",
+       "trePhysicianSurName":"กวมทรัพย์",
+       "treLicensed_No":"พท.ป. 2225"
     },
     {
-       "cerNameTitle":"นางสาว",
-       "cerPhysicianName":"ชลิยา",
-       "cerPhysicianSurName":"ใจเย็น",
-       "cerLicensed_No":"พท.ป. 699"
+       "treNameTitle":"นางสาว",
+       "trePhysicianName":"ชลิยา",
+       "trePhysicianSurName":"ใจเย็น",
+       "treLicensed_No":"พท.ป. 699"
     }
  ]
