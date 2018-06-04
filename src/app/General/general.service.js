@@ -10,7 +10,6 @@ service.find = (id) => {
 }
 
 service.create = (gen) => {
-    console.log(gen.personId)
     newgen = new General({
         personId: mongoose.Types.ObjectId(gen.personId),
         genDate: gen.genDate,
