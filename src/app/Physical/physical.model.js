@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 var PhysicalSchema = new Schema({
     personId: { "type": mongoose.Schema.Types.ObjectId, "ref": "personal" },
     date: String,
+    time: String,
     phyTemp: String,
     phyPulse: String,
     phyRespirationRate: String,

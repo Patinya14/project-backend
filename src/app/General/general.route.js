@@ -13,10 +13,9 @@ router.get('/general/:id', (req, res) => {
     })
 });
 router.post('/general', (req, res) => {
-    console.log(req.body)
-    // service.create(req.body).then((general) => { // req.body is all-subject data at user new entered.  
-    //     res.json(general) // response data with JSON.
-    // });
+    service.create(req.body).then((general) => { // req.body is all-subject data at user new entered.  
+        res.json(general) // response data with JSON.
+    });
 });
 router.put('/general/:id', (req, res) => {
     service.update(req.body, req.params.id).then((general) => { // req.body is all-subject data at user edit. & req.params.id is ID in rows at user edit.

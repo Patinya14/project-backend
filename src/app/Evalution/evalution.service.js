@@ -11,7 +11,8 @@ service.find = (id) => {
 service.create = (eva) => {
    eva = new Evalution({
         personId : mongoose.Types.ObjectId(eva.personId),
-        evaDate: eva.evaDate,
+        date: eva.date,
+        time: eva.time,
         evaAfter: eva.evaAfter,
         evaBodyParth: eva.evaBodyParth,
         evaLevel: eva.evaLevel,

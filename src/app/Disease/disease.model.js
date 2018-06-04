@@ -3,6 +3,8 @@ var Schema = mongoose.Schema;
 
 var DiseaseSchema = new Schema({
     // personId: { "type": mongoose.Schema.Types.ObjectId, "ref": "personal" },
+    date: String,
+    time: String,
     disName: String,
     disID: String, //รหัสโรค
     disProcedure: String,
