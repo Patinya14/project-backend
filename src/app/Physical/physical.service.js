@@ -6,7 +6,7 @@ service.call = () => {
     return Physical.find().sort({_id: -1});
 }
 service.find = (id) => {
-    return Physical.find({personId: id}).sort({_id: -1})
+    return Physical.find({ personId: id}).sort({_id: -1})
 }
 service.create = (phy) => {
     newphy = new Physical({
@@ -18,7 +18,6 @@ service.create = (phy) => {
         phyBp: phy.phyBp,
         phyHeight: phy.phyHeight,
         phyWeight: phy.phyWeight,
-        phyetc: phy.phyetc,
         phyBodyParth: phy.phyBodyParth,
         phyLevel: phy.phyLevel,
     })
