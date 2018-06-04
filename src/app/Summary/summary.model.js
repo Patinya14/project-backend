@@ -2,14 +2,11 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var SummarySchema = new Schema({
-    sumDisease: String, //โรค
-    sumProcedure: String, //หัตถการ
-    sumTreatment: String,//วิธีการรักษา
-    sumIntime: String, //ในเวลา
-    sumOuttime: String,//นอกเวลา
-    sumDrug: String,//จ่ายยา
-    sumUnit: String,//จำนวน
-
+    personId: { "type": mongoose.Schema.Types.ObjectId, "ref": "personal" },
+    disease: { "type": mongoose.Schema.Types.ObjectId, "ref": "Disease" }, //โรค
+    treatment: [],//วิธีการรักษา
+    countDrugs: [],//จ่ายยา
+    statusTime: String,
 });
 
 var Summary = mongoose.model('summary', SummarySchema);
