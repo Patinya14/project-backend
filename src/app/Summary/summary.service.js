@@ -10,8 +10,14 @@ service.call = () => {
 // }
 
 service.create = (sum) => {
-    sum= new Summary({
-       
+    sum = new Summary({
+        sumDisease: sum.sumDisease, //โรค
+        sumProcedure: sum.sumProcedure, //หัตถการ
+        sumTreatment: sum.sumTreatment,//วิธีการรักษา
+        sumIntime: sum.sumIntime, //ในเวลา
+        sumOuttime: sum.sumDisease,//นอกเวลา
+        sumDrug: sum.sumOuttime,//จ่ายยา
+        sumUnit: sum.sumUnit,//จำนวน
     })
     return sum.save();
 }
