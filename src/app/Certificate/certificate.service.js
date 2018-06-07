@@ -3,14 +3,14 @@ const mongoose = require('mongoose');
 let service = {}  
 
 service.call = () => {
-    return Certificate.find().sort({_id: -1});
+    return Certificate.find().populate("personal").sort({_id: -1});
 }
-// service.find = (id) => {
-//     return Certificate.find({  cerPhysicianName: id})
-// }
+service.find = (id) => {
+    return Certificate.find({ personal: id }).populate("personal").sort({ _id: -1 })
+}
 service.create = (cer) => {
     cer= new Certificate({
-        personId : mongoose.Types.ObjectId(cer.personId),
+        personal : mongoose.Types.ObjectId(cer.personal),
         cerDateout: cer.cerDateout, //วันเดือนปีที่ออกใบรับรองแพทย์
         cerDateMeet: cer.cerDateMeet, //วันเดือนปีที่รับการรักษา
         cerSymptom: cer.cerSymptom, //อาการของโรค

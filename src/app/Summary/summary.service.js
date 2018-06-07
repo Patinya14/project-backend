@@ -13,9 +13,12 @@ service.create = (sum) => {
     newsum = new Summary({
         personId: mongoose.Types.ObjectId(sum.personId),
         disease: mongoose.Types.ObjectId(sum.disease), //โรค
+        date: sum.date,
+        time: sum.time,
         treatment: sum.treatment, //หัตถการ
         countDrugs: sum.countDrugs,//วิธีการรักษา
         statusTime: sum.statusTime,
+        
     })
     return newsum.save();
 }
