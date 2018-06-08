@@ -2,7 +2,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var FollowSchema = new Schema({
-    personId: {"type": mongoose.Schema.Types.ObjectId, "ref":"personal"},
+    personal: {"type": mongoose.Schema.Types.ObjectId, "ref":"personal"},
+    treater: { "type": mongoose.Schema.Types.ObjectId, "ref": "treater" },
     folDate: String, //วันที่นัดหมาย
     folmytimeHour: String, 
     folmytimeMinute: String,

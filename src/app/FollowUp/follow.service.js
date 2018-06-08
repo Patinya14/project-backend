@@ -3,15 +3,13 @@ const mongoose = require('mongoose');
 let service = {}
 
 service.call = () => {
-    return Follow.find().sort({_id: -1});
-}
-service.find = (id) => {
-    return Follow.find({ personId: id })
+    return Follow.find().populate("personal").populate("treater").sort({folDate: -1});
 }
 
 service.create = (fol) => {
     fol = new Follow({
-        personId: mongoose.Types.ObjectId(fol.person),
+        personal : mongoose.Types.ObjectId(fol.personal),
+        treater: mongoose.Types.ObjectId(fol.treater),
         folDate: fol.folDate, //วันที่นัดหมาย
         folmytimeHour: fol.folmytimeHour,
         folmytimeMinute: fol.folmytimeMinute,
