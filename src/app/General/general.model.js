@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var GeneralSchema = new Schema({
     personId: {"type": mongoose.Schema.Types.ObjectId, "ref":"personal"},
-    date: String,
+    date: Date,
     time: String,
     genSymptoms: String,
     genPresentHistory: String,
