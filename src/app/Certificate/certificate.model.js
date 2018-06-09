@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var CertificateSchema = new Schema({
     personal: {"type": mongoose.Schema.Types.ObjectId, "ref":"personal"},
     treater: { "type": mongoose.Schema.Types.ObjectId, "ref": "treater" }, 
-    cerDateout: String, //วันเดือนปีที่ออกใบรับรองแพทย์
+    date: Date,
     cerDateMeet: String, //วันเดือนปีที่รับการรักษา
     cerSymptom: String, //อาการของโรค
   

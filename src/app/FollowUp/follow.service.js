@@ -21,7 +21,7 @@ service.create = (fol) => {
 }
 
 service.update = (fol, id) => {
-    return Follow.findByIdAndUpdate(id, fol, { new: true })
+    return Follow.findByIdAndUpdate(id,fol, { new: true })
 }
 
 service.delete = (id) => {
