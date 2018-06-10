@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var PhysicalSchema = new Schema({
     personId: { "type": mongoose.Schema.Types.ObjectId, "ref": "personal" },
-    date: String,
+    date: Date,
     time: String,
     phyTemp: String,
     phyPulse: String,
