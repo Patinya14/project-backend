@@ -13,8 +13,6 @@ var PhysicalSchema = new Schema({
     phyWeight: String,
     phyBodyParth: String,
     phyLevel: String,
-
-
 });
 
 var Physical = mongoose.model('physical', PhysicalSchema);
