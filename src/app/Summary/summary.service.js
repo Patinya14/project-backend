@@ -6,19 +6,19 @@ service.call = () => {
     return Summary.find().populate("disease").sort({ _id: -1 });
 }
 service.find = (id) => {
-    return Summary.find({ personId: id }).populate("disease").sort({ _id: -1 })
+    return Summary.find({ personId: id }).populate("disease").populate("treater").sort({ _id: -1 })
 }
 
 service.create = (sum) => {
     newsum = new Summary({
         personId: mongoose.Types.ObjectId(sum.personId),
         disease: mongoose.Types.ObjectId(sum.disease), //โรค
+        treater: mongoose.Types.ObjectId(sum.treater),
         date: sum.date,
         time: sum.time,
         treatment: sum.treatment, //หัตถการ
         countDrugs: sum.countDrugs,//วิธีการรักษา
         statusTime: sum.statusTime,
-        
     })
     return newsum.save();
 }

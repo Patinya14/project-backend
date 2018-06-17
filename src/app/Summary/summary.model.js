@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 var SummarySchema = new Schema({
     personId: { "type": mongoose.Schema.Types.ObjectId, "ref": "personal" },
     disease: { "type": mongoose.Schema.Types.ObjectId, "ref": "Disease" }, //โรค
+    treater: { "type": mongoose.Schema.Types.ObjectId, "ref": "treater" },
     date: String,
     time: String,
     treatment: [],//วิธีการรักษา
