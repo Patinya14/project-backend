@@ -3,13 +3,27 @@ const mongoose = require('mongoose');
 let service = {}  
 
 service.call = () => {
-    return Personal.find()
+    return Personal.find().sort({ personId: -1 })
 }
 
 service.find = (id) => {
     return Personal.findOne({_id: id})
 }
 
+service.generate = () => {
+    return new Promise(resolve => {
+        service.call().then(listPersonals => {
+            let newId = String(new Date().getFullYear() + 543).substring(2, 4);
+            listPersonals.forEach(person => {
+                if (newId === person.personId.substring(0, 2)){
+                    resolve(person.personId);
+                }
+            })
+            resolve(newId + '-0000');
+        })
+    })
+}
+ 
 service.create = (person) => {
     person = new Personal({
         personId :person.personId,
