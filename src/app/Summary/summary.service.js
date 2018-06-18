@@ -1,5 +1,7 @@
 const Summary = require('./summary.model').Summary;
 const mongoose = require('mongoose');
+const PDF = require('pdfkit');
+const fs = require('fs');
 let service = {}
 
 service.call = () => {
@@ -7,6 +9,17 @@ service.call = () => {
 }
 service.find = (id) => {
     return Summary.find({ personId: id }).populate("disease").populate("treater").sort({ _id: -1 })
+}
+
+service.document = () => {
+    doc = new PDF;
+    doc.pipe(fs.createWriteStream('sumary.pdf'));
+    doc.fontSize(15).text('Wally Gator !', 50, 50);
+    doc.text('Wally Gator is a swinging alligator in the swamp. He\'s the greatest percolator when he really starts to romp. There has never been a greater operator in the swamp. See ya later, Wally Gator.', {
+        width: 410,
+        align: 'left'
+    });
+    doc.end();
 }
 
 service.create = (sum) => {
