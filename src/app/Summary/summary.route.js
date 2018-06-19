@@ -1,18 +1,26 @@
 const express = require('express') // create constant value for use express libary 
 const router = express.Router() // create constant value for use Router by express libary
+const lib = require('../Library/pdfmake/pdf-summary');
 const service = require('./summary.service');
 router.get('/summary', (req, res) => {
-    service.call().then((summary) => { // req.body is all-subject data at user new entered. 
+    service.call().then((summary) => {  
         res.json(summary) // response data with JSON.
     });
 });
 router.get('/summary/:id', (req, res) => {
-    service.find(req.params.id).then((summary) => { // req.body is all-subject data at user new entered.  
+    service.find(req.params.id).then((summary) => {   
         res.json(summary) // response data with JSON.
     });
 });
+router.get('/summary/getpdf/:id', (req, res) => {
+    service.call().then((summary) => {
+        lib.document(summary);
+        res.json({})
+        
+    });
+});
 router.post('/summary', (req, res) => {
-    service.create(req.body).then((summary) => { // req.body is all-subject data at user new entered.  
+    service.create(req.body).then((summary) => {   
         res.json(summary) // response data with JSON.
     });
 });
