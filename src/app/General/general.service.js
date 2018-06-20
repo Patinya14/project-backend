@@ -17,6 +17,7 @@ service.create = (gen) => {
         genSymptoms: gen.genSymptoms,
         genPresentHistory: gen.genPresentHistory,
         genPastHistory: gen.genPastHistory,
+        genCongenitalDisease: gen.genCongenitalDisease,//โรคประจำตัว
     })
     return newgen.save();
 }
