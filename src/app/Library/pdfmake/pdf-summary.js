@@ -13,7 +13,7 @@ var font = {
 library.document = (summary) => {
     var printer = new PdfPrinter(font);
     var datatable = [];
-    datatable.push(['วันเดือนปี', 'ลำดับ', 'ชื่อ-สกุล', 'เลขที่บัตร', 'ประเภท'])
+    datatable.push(['วันเดือนปี', 'ลำดับ', 'ชื่อ-สกุล', 'เลขที่บัตร', 'ประเภท', 'ชื่อโรค'])
     summary.forEach(sum => {
         var row = [];
         row.push(sum.date);
@@ -21,6 +21,7 @@ library.document = (summary) => {
         row.push(sum.personId.personNameTitle + sum.personId.personName + ' ' + sum.personId.personSurname);
         row.push(sum.personId.personId);
         row.push('');
+        row.push(sum.disease.disName);
         datatable.push(row);
     });
 
