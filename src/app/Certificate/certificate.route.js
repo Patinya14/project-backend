@@ -1,5 +1,6 @@
 const express = require('express') // create constant value for use express libary 
 const router = express.Router() // create constant value for use Router by express libary
+const lib = require('../Library/pdfmake/pdf-certificate');
 const service = require('./certificate.service');
 
 router.get('/certificate', (req, res) => {
@@ -11,6 +12,13 @@ router.get('/certificate/:id', (req, res) => {
     service.find(req.params.id).then((certificate) => {
         res.json(certificate);
     })
+});
+router.get('/certificate/getpdf/:id', (req, res) => {
+    service.call().then((certificate) => {
+        lib.document(certificate);
+        res.json({})
+        
+    });
 });
 router.post('/certificate', (req, res) => {
     service.create(req.body).then((certificate) => { // req.body is all-subject data at user new entered.  
