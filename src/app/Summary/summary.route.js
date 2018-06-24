@@ -1,6 +1,7 @@
 const express = require('express') // create constant value for use express libary 
 const router = express.Router() // create constant value for use Router by express libary
 const lib = require('../Library/pdfmake/pdf-summary');
+const dia = require('../Library/pdfmake/pdf-summaryDialog');
 const service = require('./summary.service');
 router.get('/summary', (req, res) => {
     service.call().then((summary) => {  
@@ -15,6 +16,7 @@ router.get('/summary/:id', (req, res) => {
 router.get('/summary/getpdf/:id', (req, res) => {
     service.call().then((summary) => {
         lib.document(summary);
+        dia.document(summary);
         res.json({})
         
     });
