@@ -22,6 +22,7 @@ service.create = (phy) => {
         phyWeight: phy.phyWeight,
         phyBodyParth: phy.phyBodyParth,
         phyLevel: phy.phyLevel,
+        phyJoinBodyParth: phy.phyJoinBodyParth,
     })
     return newphy.save();
 }
