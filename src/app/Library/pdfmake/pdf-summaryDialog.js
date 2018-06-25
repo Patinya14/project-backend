@@ -22,14 +22,14 @@ library.document = (summary) => {
                 table: {
                     headerRows: 1,
                     body: [
-                        [{fontSize: 16,text:'วันที่:'},{fontSize: 18,text:''}],
-                        [{fontSize: 16,text:'อาการโรค:'},{fontSize: 18,text:''}],
-                        [{fontSize: 16,text:'หัตถการ:'},{fontSize: 18,text:'aaa'}],
-                        [{fontSize: 16,text:'วิธีการรักษา '},{fontSize: 18,text:'aaa'}],
-                        [{fontSize: 16,text:'ช่วงเวลาการรักษา:'},{fontSize: 18,text:'aa'}],
-                        [{fontSize: 16,text:'จ่ายยา:'},{fontSize: 18,text:'aaa'}],
-                        [{fontSize: 16,text:'ผู้รักษา:'},{fontSize: 18,text:'aaa'}],
-                        [{fontSize: 16,text:'ผู้ตรวจ:'},{fontSize: 18,text:'aaa'}],
+                        [{margin:[50,0,0,0],fontSize: 16,text:'วันที่ :'}],
+                        [{margin:[50,0,0,0],fontSize: 16,text:'อาการโรค :'}],
+                        [{margin:[50,0,0,0],fontSize: 16,text:'หัตถการ :'}],
+                        [{margin:[50,0,0,0],fontSize: 16,text:'วิธีการรักษา : '}],
+                        [{margin:[50,0,0,0],fontSize: 16,text:'ช่วงเวลาการรักษา :'}],
+                        [{margin:[50,0,0,0],fontSize: 16,text:'จ่ายยา :'}],
+                        [{margin:[50,0,0,0],fontSize: 16,text:'ผู้รักษา :'}],
+                        [{margin:[50,0,0,0],fontSize: 16,text:'ผู้ตรวจ :'}],
                     ]
                 },
                 layout: 'noBorders'
