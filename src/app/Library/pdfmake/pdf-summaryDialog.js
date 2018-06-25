@@ -17,13 +17,6 @@ library.document = (summary) => {
         pageSize: 'A5',
         content: [
             {
-            // columns: [
-                //     {fontSize: 16,text:'รายละเอียด: ข้อมูลสรุปความเจ็บป่วย \nอาการโรค: \nหัตถการ: \nวิธีการรักษา \nช่วงเวลาการรักษา: \nจ่ายยา:'},
-                //     {fontSize: 16,text:'sfgsgs'}
-                    
-                   
-                // ]
-            
                 text:'รายละเอียด: ข้อมูลสรุปความเจ็บป่วย',fontSize: 22,bold:true,margin:[0,0,0,8]
             },{
                 table: {
@@ -35,6 +28,8 @@ library.document = (summary) => {
                         [{fontSize: 16,text:'วิธีการรักษา '},{fontSize: 18,text:'aaa'}],
                         [{fontSize: 16,text:'ช่วงเวลาการรักษา:'},{fontSize: 18,text:'aa'}],
                         [{fontSize: 16,text:'จ่ายยา:'},{fontSize: 18,text:'aaa'}],
+                        [{fontSize: 16,text:'ผู้รักษา:'},{fontSize: 18,text:'aaa'}],
+                        [{fontSize: 16,text:'ผู้ตรวจ:'},{fontSize: 18,text:'aaa'}],
                     ]
                 },
                 layout: 'noBorders'
