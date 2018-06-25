@@ -13,7 +13,7 @@ router.get('/summary', (req, res) => {
             for (let i = 0; i < summary.length; i++) {
                 let status = await service.find(summary[i].personId._id).then(cursor => {
                     if (cursor.length > 1) return 'ผู้ป่วยรายเก่า';
-                    else  return 'ผู้ป่วยรายใหม่';
+                    else return 'ผู้ป่วยรายใหม่';
                 })
                 data.push(func.pushSummary(summary[i], status))
             }
@@ -61,19 +61,26 @@ func.pushSummary = (summary, status) => {
         officer: summary.officer,
         date: summary.date,
         time: summary.time,
-        // charge: func.calculateCharge(summary.treatment, summary.statusTime),
+        charge: func.calculateCharge(summary.treatment, summary.countDrugs, summary.statusTime),
         status: status,
         statusTime: summary.statusTime
     }
 }
 
-func.calculateCharge = (treatment, statusTime) => {
-    if ( statusTime !== undefined && statusTime !== '') {
-        treatment.forEach(treat => {
-            if(statusTime === 'ในเวลา') {
-                Number(treat.treatInTime)
-            }
+func.calculateCharge = (treatment, drug, statusTime) => {
+    if (statusTime !== undefined && statusTime !== '') {
+        let charge = 0;
+        treatment.forEach(element => {
+            if (statusTime === 'ในเวลา') charge += Number(element.treat.treatInTime) * Number(element.hours)
+            else if (statusTime === 'นอกเวลา') charge += Number(element.treat.treatOutTime) * Number(element.hours)
         });
+        drug.forEach(element => {
+            charge += Number(element.drug.drugPrice) * Number(element.count)
+        });
+        return charge;
+    } else {
+        return 0;
     }
 }
+
 module.exports = router
