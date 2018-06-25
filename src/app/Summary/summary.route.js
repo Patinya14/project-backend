@@ -1,7 +1,7 @@
 const express = require('express') // create constant value for use express libary 
 const router = express.Router() // create constant value for use Router by express libary
 const lib = require('../Library/pdfmake/pdf-summary');
-const dia = require('../Library/pdfmake/pdf-summaryDialog');
+// const dia = require('../Library/pdfmake/pdf-summaryDialog');
 const service = require('./summary.service');
 
 let func = {}
@@ -13,7 +13,7 @@ router.get('/summary', (req, res) => {
             for (let i = 0; i < summary.length; i++) {
                 let status = await service.find(summary[i].personId._id).then(cursor => {
                     if (cursor.length > 1) return 'ผู้ป่วยรายเก่า';
-                    else  return 'ผู้ป่วยรายใหม่';
+                    else return 'ผู้ป่วยรายใหม่';
                 })
                 data.push(func.pushSummary(summary[i], status))
             }
@@ -29,8 +29,10 @@ router.get('/summary/:id', (req, res) => {
 });
 router.get('/summary/getpdf/:id', (req, res) => {
     service.call().then((summary) => {
-        lib.document(summary);
-        dia.document(summary);
+        func.formatSummary(summary).then(result => {
+            lib.document(result);
+        })
+        // dia.document(summary);
         res.json({})
 
     });
@@ -50,7 +52,17 @@ router.delete('/summary/:id', (req, res) => {
         res.send("200")
     });
 });
-
+func.formatSummary = async (summary) => {
+    let data = []
+    for (let i = 0; i < summary.length; i++) {
+        let status = await service.find(summary[i].personId._id).then(cursor => {
+            if (cursor.length > 1) return 'ผู้ป่วยรายเก่า';
+            else return 'ผู้ป่วยรายใหม่';
+        })
+        data.push(func.pushSummary(summary[i], status))
+    }
+    return data
+}
 func.pushSummary = (summary, status) => {
     return {
         treatment: summary.treatment,
@@ -61,19 +73,26 @@ func.pushSummary = (summary, status) => {
         officer: summary.officer,
         date: summary.date,
         time: summary.time,
-        // charge: func.calculateCharge(summary.treatment, summary.statusTime),
+        charge: func.calculateCharge(summary.treatment, summary.countDrugs, summary.statusTime),
         status: status,
         statusTime: summary.statusTime
     }
 }
 
-func.calculateCharge = (treatment, statusTime) => {
-    if ( statusTime !== undefined && statusTime !== '') {
-        treatment.forEach(treat => {
-            if(statusTime === 'ในเวลา') {
-                Number(treat.treatInTime)
-            }
+func.calculateCharge = (treatment, drug, statusTime) => {
+    if (statusTime !== undefined && statusTime !== '') {
+        let charge = 0;
+        treatment.forEach(element => {
+            if (statusTime === 'ในเวลา') charge += Number(element.treat.treatInTime) * Number(element.hours)
+            else if (statusTime === 'นอกเวลา') charge += Number(element.treat.treatOutTime) * Number(element.hours)
         });
+        drug.forEach(element => {
+            charge += Number(element.drug.drugPrice) * Number(element.count)
+        });
+        return charge;
+    } else {
+        return 0;
     }
 }
+
 module.exports = router
