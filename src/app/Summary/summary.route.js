@@ -1,7 +1,7 @@
 const express = require('express') // create constant value for use express libary 
 const router = express.Router() // create constant value for use Router by express libary
 const lib = require('../Library/pdfmake/pdf-summary');
-// const dia = require('../Library/pdfmake/pdf-summaryDialog');
+const dia = require('../Library/pdfmake/pdf-summaryDialog');
 const service = require('./summary.service');
 
 let func = {}
@@ -24,6 +24,7 @@ router.get('/summary', (req, res) => {
 
 router.get('/summary/:id', (req, res) => {
     service.find(req.params.id).then((summary) => {
+        dia.document(summary);
         res.json(summary) // response data with JSON.
     });
 });
@@ -32,7 +33,6 @@ router.get('/summary/getpdf/:id', (req, res) => {
         func.formatSummary(summary).then(result => {
             lib.document(result);
         })
-        // dia.document(summary);
         res.json({})
 
     });
