@@ -11,7 +11,7 @@ var font = {
     }
 };
 
-library.document = (summary) => {
+library.document = (summary, filename) => {
     var printer = new PdfPrinter(font);
     var documentPdf = {
         pageOrientation: 'landscape',
@@ -26,7 +26,7 @@ library.document = (summary) => {
         ]
     };
     var pdfDoc = printer.createPdfKitDocument(documentPdf);
-    pdfDoc.pipe(fs.createWriteStream('app/Summary/pdfs-summary/basics.pdf'));
+    pdfDoc.pipe(fs.createWriteStream('app/Summary/pdfs-summary/'+ filename +'.pdf'));
     pdfDoc.end();
 }
 
