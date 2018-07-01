@@ -1,8 +1,12 @@
 const express = require('express') // create constant value for use express libary 
 const router = express.Router() // create constant value for use Router by express libary
 const lib = require('../Library/pdfmake/pdf-summary');
+<<<<<<< HEAD
 const fs = require('fs')
 // const dia = require('../Library/pdfmake/pdf-summaryDialog');
+=======
+const dia = require('../Library/pdfmake/pdf-summaryDialog');
+>>>>>>> b161656b9dbbe22b4b35786d6960679b2c7b5a06
 const service = require('./summary.service');
 
 let func = {}
@@ -25,6 +29,7 @@ router.get('/summary', (req, res) => {
 
 router.get('/summary/:id', (req, res) => {
     service.find(req.params.id).then((summary) => {
+        dia.document(summary);
         res.json(summary) // response data with JSON.
     });
 });
@@ -47,7 +52,12 @@ router.post('/summary/createpdf', (req, res) => {
             })
             await lib.document(pdf, filename);
         })
+<<<<<<< HEAD
         res.status(200).send({})
+=======
+        res.json({})
+
+>>>>>>> b161656b9dbbe22b4b35786d6960679b2c7b5a06
     });
 });
 router.post('/summary', (req, res) => {

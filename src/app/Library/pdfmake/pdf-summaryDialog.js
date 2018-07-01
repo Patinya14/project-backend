@@ -1,6 +1,7 @@
 const PdfPrinter = require('pdfmake');
 const fs = require('fs');
 let library = {};
+let dialog = {};
 var font = {
     Roboto: {
         normal: 'app/Library/pdfmake/fonts/THSarabunNew.ttf',
@@ -11,34 +12,33 @@ var font = {
 };
 
 library.document = (summary) => {
+
     var printer = new PdfPrinter(font);
     var documentPdf = {
         pageOrientation: 'landscape',
         pageSize: 'A5',
         content: [
             {
-                text:'รายละเอียด: ข้อมูลสรุปความเจ็บป่วย',fontSize: 22,bold:true,margin:[0,0,0,8]
-            },{
-                table: {
-                    headerRows: 1,
-                    body: [
-                        [{fontSize: 16,text:'วันที่:'},{fontSize: 18,text:''}],
-                        [{fontSize: 16,text:'อาการโรค:'},{fontSize: 18,text:''}],
-                        [{fontSize: 16,text:'หัตถการ:'},{fontSize: 18,text:'aaa'}],
-                        [{fontSize: 16,text:'วิธีการรักษา '},{fontSize: 18,text:'aaa'}],
-                        [{fontSize: 16,text:'ช่วงเวลาการรักษา:'},{fontSize: 18,text:'aa'}],
-                        [{fontSize: 16,text:'จ่ายยา:'},{fontSize: 18,text:'aaa'}],
-                        [{fontSize: 16,text:'ผู้รักษา:'},{fontSize: 18,text:'aaa'}],
-                        [{fontSize: 16,text:'ผู้ตรวจ:'},{fontSize: 18,text:'aaa'}],
-                    ]
-                },
-                layout: 'noBorders'
-            }
+                text: 'รายละเอียด: ข้อมูลสรุปความเจ็บป่วย', fontSize: 22, bold: true, margin: [0, 0, 0, 8]
+            }, 
+                        { margin: [50, 5, 0, 0], fontSize: 16, text: 'วันที่ :' }, {margin: [150, -20, 0, 0],fontSize: 16,text:dialog.showDate(summary[0].date)},
+                        { margin: [50, 5, 0, 0], fontSize: 16, text: 'อาการโรค :' }, {margin: [150, -20, 0, 0],fontSize: 16,text:summary[0].disease.disName},
+                        { margin: [50, 5, 0, 0], fontSize: 16, text: 'หัตถการ :' }, {margin: [150, -20, 0, 0],fontSize: 16,text:summary[0].disease.disProcedure},
+                        // { margin: [50, 0, 0, 0], fontSize: 16, text: 'วิธีการรักษา : ' }, summary[0].treat[0].treatMents,
+                        { margin: [50, 5, 0, 0], fontSize: 16, text: 'ช่วงเวลาการรักษา :' }, {margin: [150, -20, 0, 0],fontSize: 16,text:summary[0].statusTime},
+                        // { margin: [50, 0, 0, 0], fontSize: 16, text: 'จ่ายยา :' }, summary[0].drug[0].drugName,
+                        { margin: [50, 5, 0, 0], fontSize: 16, text: 'ผู้รักษา :' }, {margin: [150, -20, 0, 0],fontSize: 16,text:summary[0].treater.trePhysicianName + ' ' + summary[0].treater.trePhysicianSurName},
+                        { margin: [50, 5, 0, 0], fontSize: 16, text: 'ผู้ตรวจ :' }, {margin: [150, -20, 0, 0],fontSize: 16,text:summary[0].officer.ficerName + ' ' + summary[0].officer.ficerSurName}
         ]
     };
     var pdfDoc = printer.createPdfKitDocument(documentPdf);
     pdfDoc.pipe(fs.createWriteStream('app/Summary/pdfs-summary/summaryDialog.pdf'));
     pdfDoc.end();
 }
-
+dialog.showDate = (date) => {
+    let year = String(Number(String(date).substr(0, 4)) + 543);
+    let month = String(date).substr(5, 2);
+    let day = String(date).substr(8, 2);
+    return day + '/' + month + '/' + year;
+}
 module.exports = library;
