@@ -1,7 +1,7 @@
 const PdfPrinter = require('pdfmake');
 const fs = require('fs');
 let library = {};
-let cer = {};
+let cer = {}
 var font = {
     Roboto: {
         normal: 'app/Library/pdfmake/fonts/THSarabunNew.ttf',
@@ -35,7 +35,7 @@ library.document = (certificate) => {
             { fontSize: 15, text: 'โดยวิธีทางการแพทย์แผนไทย' },
             { margin: 10, text: '' },
             { alignment: 'right', fontSize: 15, text: 'ลงชื่อ.................................................ผู้ตรวจ' },
-            { alignment: 'right', fontSize: 15, text: '(                                                )' },{ margin: [205, -20, 0, 0], fontSize: 15, text: certificate[0].treater.treNameTitle + certificate[0].treater.trePhysicianName + ' ' + certificate[0].treater.trePhysicianSurName },
+            { alignment: 'right', fontSize: 15, text: '(                                                )' },{ margin: [208, -20, 0, 0], fontSize: 15, text: certificate[0].treater.treNameTitle + certificate[0].treater.trePhysicianName + ' ' + certificate[0].treater.trePhysicianSurName },
             { margin: [215, 0, 0, 15], fontSize: 15, text: 'แพทย์แผนไทยประยุกต์' },
             'หมายเหตุ : ใบรับรองแพทย์นี้จะสมบูรณ์เมื่อมีตราประทับของศูนย์บริการการแพทย์แผนไทยและ',
             { margin: [40, 0, 0, 0], text: 'การแพทย์ทางเลือกคณะการแพทย์แผนไทยอภัยภูเบศร มหาวิทยาลัยบูรพา จังหวัดชลบุรี' },
@@ -47,9 +47,10 @@ library.document = (certificate) => {
     pdfDoc.end();
 }
 cer.showDate = (date) => {
-    let year = String(Number(String(date).substr(0, 4)) + 543);
-    let month = String(date).substr(5, 2);
-    let day = String(date).substr(8, 2);
+    //console.log(date.getDay())
+    let year = String(date.getFullYear()+543);
+    let month = String(date.getMonth()+1);
+    let day = String(date).substr(8, 2)-1;
     return day + '/' + month + '/' + year;
 }
 

@@ -19,12 +19,15 @@ library.document = (summary) => {
         
         content: [
             { 
-                table: { 	
-                    body:table.createTable(summary)
+            
+                table: {
+                    body: table.createTable(summary)
                 }
+ 
             }
         ]
     };
+    
     var pdfDoc = printer.createPdfKitDocument(documentPdf);
     pdfDoc.pipe(fs.createWriteStream('app/Summary/pdfs-summary/basics.pdf'));
     pdfDoc.end();
@@ -32,10 +35,10 @@ library.document = (summary) => {
 
 table.createTable = (summary) => {
     var datatable = [];
-    datatable.push([{ rowSpan: 3, margin: [0, 10, 0, 5], alignment: 'center', text: 'วันเดือนปี' }, { rowSpan: 3, margin: [0, 10, 0, 5], text: 'ลำดับ' }, { rowSpan: 3, margin: [0, 10, 0, 5], alignment: 'center', text: 'ชื่อ-สกุล' }, { rowSpan: 3, margin: [0, 10, 0, 5], text: 'เลขที่บัตร' }, { rowSpan: 3, margin: [0, 10, 0, 5],alignment: 'center', text: 'ประเภท' },
+    datatable.push([{ rowSpan: 3, margin: [0, 10, 0, 5], alignment: 'center', text: 'วันเดือนปี' }, { rowSpan: 3, margin: [0, 10, 0, 5], text: 'ลำดับ' }, { rowSpan: 3, margin: [0, 10, 0, 5], alignment: 'center', text: 'ชื่อ-สกุล' }, { rowSpan: 3, margin: [0, 10, 0, 5], text: 'เลขที่บัตร' }, { rowSpan: 3, margin: [0, 10, 0, 5], alignment: 'center', text: 'ประเภท' },
     { rowSpan: 3, alignment: 'center', margin: [0, 10, 0, 5], text: 'อาการ' }, { colSpan: 2, alignment: 'center', rowSpan: 2, text: 'บริการที่ใช้ แพทย์แผนไทย' }, '', { rowSpan: 3, margin: [0, 10, 0, 5], text: 'รวมเงิน(บาท)' }, { rowSpan: 3, alignment: 'center', margin: [0, 10, 0, 5], text: 'ผู้ตรวจ' }, { rowSpan: 3, alignment: 'center', margin: [0, 10, 0, 5], text: 'ผู้รักษา' }])
     datatable.push(['', '', '', '', '', '', '', '', '', '', ''])
-    datatable.push(['', '', '', '', '', '', {alignment: 'center',text:'วิธีรักษา'},{alignment: 'center',text:'จ่ายยา'}, '', '', ''])
+    datatable.push(['', '', '', '', '', '', { alignment: 'center', text: 'วิธีรักษา' }, { alignment: 'center', text: 'จ่ายยา' }, '', '', ''])
 
     summary.forEach(sum => {
         var row = [];

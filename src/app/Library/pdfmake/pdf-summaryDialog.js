@@ -20,15 +20,15 @@ library.document = (summary) => {
         content: [
             {
                 text: 'รายละเอียด: ข้อมูลสรุปความเจ็บป่วย', fontSize: 22, bold: true, margin: [0, 0, 0, 8]
-            }, 
-                        { margin: [50, 5, 0, 0], fontSize: 16, text: 'วันที่ :' }, {margin: [150, -20, 0, 0],fontSize: 16,text:dialog.showDate(summary[0].date)},
-                        { margin: [50, 5, 0, 0], fontSize: 16, text: 'อาการโรค :' }, {margin: [150, -20, 0, 0],fontSize: 16,text:summary[0].disease.disName},
-                        { margin: [50, 5, 0, 0], fontSize: 16, text: 'หัตถการ :' }, {margin: [150, -20, 0, 0],fontSize: 16,text:summary[0].disease.disProcedure},
-                        // { margin: [50, 0, 0, 0], fontSize: 16, text: 'วิธีการรักษา : ' }, summary[0].treat[0].treatMents,
-                        { margin: [50, 5, 0, 0], fontSize: 16, text: 'ช่วงเวลาการรักษา :' }, {margin: [150, -20, 0, 0],fontSize: 16,text:summary[0].statusTime},
-                        // { margin: [50, 0, 0, 0], fontSize: 16, text: 'จ่ายยา :' }, summary[0].drug[0].drugName,
-                        { margin: [50, 5, 0, 0], fontSize: 16, text: 'ผู้รักษา :' }, {margin: [150, -20, 0, 0],fontSize: 16,text:summary[0].treater.trePhysicianName + ' ' + summary[0].treater.trePhysicianSurName},
-                        { margin: [50, 5, 0, 0], fontSize: 16, text: 'ผู้ตรวจ :' }, {margin: [150, -20, 0, 0],fontSize: 16,text:summary[0].officer.ficerName + ' ' + summary[0].officer.ficerSurName}
+            },
+            { margin: [50, 5, 0, 0], fontSize: 16, text: 'วันที่ :' }, { margin: [150, -20, 0, 0], fontSize: 16, text: dialog.showDate(summary[0].date) },
+            { margin: [50, 5, 0, 0], fontSize: 16, text: 'อาการโรค :' }, { margin: [150, -20, 0, 0], fontSize: 16, text: summary[0].disease.disName },
+            { margin: [50, 5, 0, 0], fontSize: 16, text: 'หัตถการ :' }, { margin: [150, -20, 0, 0], fontSize: 16, text: summary[0].disease.disProcedure },
+            // { margin: [50, 0, 0, 0], fontSize: 16, text: 'วิธีการรักษา : ' }, summary[0].treat[0].treatMents,
+            { margin: [50, 5, 0, 0], fontSize: 16, text: 'ช่วงเวลาการรักษา :' }, { margin: [150, -20, 0, 0], fontSize: 16, text: summary[0].statusTime },
+            // { margin: [50, 0, 0, 0], fontSize: 16, text: 'จ่ายยา :' }, summary[0].drug[0].drugName,
+            { margin: [50, 5, 0, 0], fontSize: 16, text: 'ผู้รักษา :' }, { margin: [150, -20, 0, 0], fontSize: 16, text: summary[0].treater.trePhysicianName + ' ' + summary[0].treater.trePhysicianSurName },
+            { margin: [50, 5, 0, 0], fontSize: 16, text: 'ผู้ตรวจ :' }, { margin: [150, -20, 0, 0], fontSize: 16, text: summary[0].officer.ficerName + ' ' + summary[0].officer.ficerSurName }
         ]
     };
     var pdfDoc = printer.createPdfKitDocument(documentPdf);
