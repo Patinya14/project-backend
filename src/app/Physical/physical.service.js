@@ -34,15 +34,4 @@ service.update = (phy, id) => {
 service.delete = (id) => {
     return Physical.findByIdAndRemove(id)
 }
-// service.calculatorBMI = (phyWeight,phyHeight) => {
-//     public = phyweight;
-//     public = phyhight;
-//     public = sum;
-//     sum = phyweight * (pow ^ 2, phyhight);
-
-//     return sum;
- 
-// }
-
-// export service module
 module.exports = service

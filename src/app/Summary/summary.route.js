@@ -1,7 +1,10 @@
 const express = require('express') // create constant value for use express libary 
 const router = express.Router() // create constant value for use Router by express libary
 const lib = require('../Library/pdfmake/pdf-summary');
+const fs = require('fs')
 const dia = require('../Library/pdfmake/pdf-summaryDialog');
+
+
 const service = require('./summary.service');
 
 let func = {}
@@ -28,11 +31,28 @@ router.get('/summary/:id', (req, res) => {
         res.json(summary) // response data with JSON.
     });
 });
+
 router.get('/summary/getpdf/:id', (req, res) => {
+    let pdf = fs.readFileSync('app/Summary/pdfs-summary/' + req.params.id + '.pdf');
+    // let pdf = 'http://localhost:3000/summary/getpdf/' + req.params.id;
+    res.contentType("application/pdf");
+    res.send(pdf);
+});
+
+router.post('/summary/createpdf', (req, res) => {
+    let reqdate = String(req.body.year - 543) + '-' + String(func.convertMonth(req.body.month));
+    let filename = reqdate;
     service.call().then((summary) => {
-        func.formatSummary(summary).then(result => {
-            lib.document(result);
+        func.formatSummary(summary).then(async result => {
+            let pdf = [];
+            result.forEach(sum => {
+                if (String(sum.date).substr(0, 7) === reqdate) pdf.push(sum)
+            })
+            await lib.document(pdf, filename);
         })
+
+        res.status(200).send({})
+
         res.json({})
 
     });
@@ -92,6 +112,24 @@ func.calculateCharge = (treatment, drug, statusTime) => {
         return charge;
     } else {
         return 0;
+    }
+}
+
+func.convertMonth = (month) => {
+    switch (month) {
+        case "มกราคม": return "01"
+        case "กุมพาพันธ์": return "02"
+        case "มีนาคม": return "03"
+        case "เมษายน": return "04"
+        case "พฤษภาคม": return "05"
+        case "มิถุนายน": return "06"
+        case "กรกฎาคม": return "07"
+        case "สิงหาคม": return "08"
+        case "กันยายน": return "09"
+        case "ตุลาคม": return "10"
+        case "พฤศจิกายน": return "11"
+        case "ธันวาคม": return "12"
+        default: return "0"
     }
 }
 
