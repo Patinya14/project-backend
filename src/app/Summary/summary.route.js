@@ -3,7 +3,7 @@ const router = express.Router() // create constant value for use Router by expre
 const lib = require('../Library/pdfmake/pdf-summary');
 // var appRoot = require('app-root-path').path;
 // const fs = require('fs')
-const dia = require('../Library/pdfmake/pdf-summaryDialog');
+// const dia = require('../Library/pdfmake/pdf-summaryDialog');
 const service = require('./summary.service');
 var path = require('path');
 let func = {}
@@ -26,7 +26,7 @@ router.get('/summary', (req, res) => {
 
 router.get('/summary/:id', (req, res) => {
     service.find(req.params.id).then((summary) => {
-        dia.document(summary);
+        // dia.document(summary);
         res.json(summary) // response data with JSON.
     });
 });
@@ -34,7 +34,7 @@ router.get('/summary/:id', (req, res) => {
 router.get('/summary/getpdf/:id', (req, res) => {
     let pdf = __dirname +'/pdf-summary/' + req.params.id + '.pdf';
     res.setHeader("Content-Type","application/pdf");
-    res.sendFile(path.resolve(pdf))
+    res.sendFile(pdf)
 });
 
 router.post('/summary/createpdf', async (req, res) => {
