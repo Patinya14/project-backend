@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 let service = {}  
 
 service.call = () => {
-    return Certificate.find().populate("personal").populate("treater").sort({cerDateout: -1});
+    return Certificate.find().populate("personal").populate("treater").sort({ _id: -1});
 }
 
 service.create = (cer) => {

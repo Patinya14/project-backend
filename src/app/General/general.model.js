@@ -8,6 +8,7 @@ var GeneralSchema = new Schema({
     genSymptoms: String,
     genPresentHistory: String,
     genPastHistory: String,
+    genCongenitalDisease: String,
 });
 
 var General = mongoose.model('general', GeneralSchema);

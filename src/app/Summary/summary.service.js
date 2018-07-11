@@ -1,32 +1,22 @@
 const Summary = require('./summary.model').Summary;
 const mongoose = require('mongoose');
-const PDF = require('pdfkit');
-const fs = require('fs');
+
 let service = {}
 
 service.call = () => {
-    return Summary.find().populate("disease").sort({ _id: -1 });
+    return Summary.find().populate("disease").populate("personId").populate("treater").populate("officer").sort({ _id: -1 });
 }
 service.find = (id) => {
-    return Summary.find({ personId: id }).populate("disease").populate("treater").sort({ _id: -1 })
-}
-
-service.document = () => {
-    doc = new PDF;
-    doc.pipe(fs.createWriteStream('sumary.pdf'));
-    doc.fontSize(15).text('Wally Gator !', 50, 50);
-    doc.text('Wally Gator is a swinging alligator in the swamp. He\'s the greatest percolator when he really starts to romp. There has never been a greater operator in the swamp. See ya later, Wally Gator.', {
-        width: 410,
-        align: 'left'
-    });
-    doc.end();
+    return Summary.find({ personId: id }).populate("disease").populate("personId").populate("treater").populate("officer").sort({ _id: -1 })
 }
 
 service.create = (sum) => {
+    
     newsum = new Summary({
         personId: mongoose.Types.ObjectId(sum.personId),
         disease: mongoose.Types.ObjectId(sum.disease), //โรค
-        treater: mongoose.Types.ObjectId(sum.treater),
+        treater: mongoose.Types.ObjectId(sum.treater) , //ผู้รักษา
+        officer: mongoose.Types.ObjectId(sum.officer), //ผู้ตรวจ
         date: sum.date,
         time: sum.time,
         treatment: sum.treatment, //หัตถการ
