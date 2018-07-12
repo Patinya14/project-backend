@@ -47,9 +47,9 @@ router.post('/summary/createpdf', async (req, res) => {
                 if (String(sum.date).substr(0, 7) === reqdate) pdf.push(sum)
             })
             if (pdf.length > 0) {
-                await lib.document(pdf, filename);
+                await lib.document(pdf, filename,res);
             }
-            res.status(200).send()
+            // res.status(200).send()
         })
     });
 });
