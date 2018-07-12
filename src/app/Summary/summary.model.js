@@ -11,8 +11,7 @@ var SummarySchema = new Schema({
     treatment: [],//วิธีการรักษา
     countDrugs: [],//จ่ายยา
     statusTime: String,
-    
-});
+})
 
 var Summary = mongoose.model('summary', SummarySchema);
 

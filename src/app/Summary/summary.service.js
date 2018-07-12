@@ -11,10 +11,11 @@ service.find = (id) => {
 }
 
 service.create = (sum) => {
+    
     newsum = new Summary({
         personId: mongoose.Types.ObjectId(sum.personId),
         disease: mongoose.Types.ObjectId(sum.disease), //โรค
-        treater: mongoose.Types.ObjectId(sum.treater), //ผู้รักษา
+        treater: mongoose.Types.ObjectId(sum.treater) , //ผู้รักษา
         officer: mongoose.Types.ObjectId(sum.officer), //ผู้ตรวจ
         date: sum.date,
         time: sum.time,
