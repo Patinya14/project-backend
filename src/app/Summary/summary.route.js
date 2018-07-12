@@ -1,12 +1,11 @@
 const express = require('express') // create constant value for use express libary 
 const router = express.Router() // create constant value for use Router by express libary
 const lib = require('../Library/pdfmake/pdf-summary');
-const fs = require('fs')
+// var appRoot = require('app-root-path').path;
+// const fs = require('fs')
 const dia = require('../Library/pdfmake/pdf-summaryDialog');
-
-
 const service = require('./summary.service');
-
+var path = require('path');
 let func = {}
 
 router.get('/summary', (req, res) => {
@@ -33,28 +32,25 @@ router.get('/summary/:id', (req, res) => {
 });
 
 router.get('/summary/getpdf/:id', (req, res) => {
-    let pdf = fs.readFileSync('app/Summary/pdfs-summary/' + req.params.id + '.pdf');
-    // let pdf = 'http://localhost:3000/summary/getpdf/' + req.params.id;
-    res.contentType("application/pdf");
-    res.send(pdf);
+    let pdf = __dirname +'/pdf-summary/' + req.params.id + '.pdf';
+    res.setHeader("Content-Type","application/pdf");
+    res.sendFile(path.resolve(pdf))
 });
 
-router.post('/summary/createpdf', (req, res) => {
+router.post('/summary/createpdf', async (req, res) => {
     let reqdate = String(req.body.year - 543) + '-' + String(func.convertMonth(req.body.month));
     let filename = reqdate;
     service.call().then((summary) => {
         func.formatSummary(summary).then(async result => {
             let pdf = [];
-            result.forEach(sum => {
+            await result.forEach(sum => {
                 if (String(sum.date).substr(0, 7) === reqdate) pdf.push(sum)
             })
-            await lib.document(pdf, filename);
+            if (pdf.length > 0) {
+                await lib.document(pdf, filename);
+            }
+            res.status(200).send()
         })
-
-        res.status(200).send({})
-
-        res.json({})
-
     });
 });
 router.post('/summary', (req, res) => {
@@ -107,7 +103,9 @@ func.calculateCharge = (treatment, drug, statusTime) => {
             else if (statusTime === 'นอกเวลา') charge += Number(element.treat.treatOutTime) * Number(element.hours)
         });
         drug.forEach(element => {
-            charge += Number(element.drug.drugPrice) * Number(element.count)
+
+            if (element.drug !== "" && element.count !== "" && element.drug !== null && element.count !== null)
+                charge += Number(element.drug.drugPrice) * Number(element.count)
         });
         return charge;
     } else {
