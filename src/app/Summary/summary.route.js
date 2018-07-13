@@ -1,9 +1,6 @@
 const express = require('express') // create constant value for use express libary 
 const router = express.Router() // create constant value for use Router by express libary
 const lib = require('../Library/pdfmake/pdf-summary');
-// var appRoot = require('app-root-path').path;
-// const fs = require('fs')
-// const dia = require('../Library/pdfmake/pdf-summaryDialog');
 const service = require('./summary.service');
 var path = require('path');
 let func = {}
@@ -32,8 +29,8 @@ router.get('/summary/:id', (req, res) => {
 });
 
 router.get('/summary/getpdf/:id', (req, res) => {
-    let pdf = __dirname +'/pdf-summary/' + req.params.id + '.pdf';
-    res.setHeader("Content-Type","application/pdf");
+    let pdf = __dirname + '/pdf-summary/' + req.params.id + '.pdf';
+    res.setHeader("Content-Type", "application/pdf");
     res.sendFile(pdf)
 });
 
@@ -47,7 +44,7 @@ router.post('/summary/createpdf', async (req, res) => {
                 if (String(sum.date).substr(0, 7) === reqdate) pdf.push(sum)
             })
             if (pdf.length > 0) {
-                await lib.document(pdf, filename,res);
+                await lib.document(pdf, filename, res);
             }
             // res.status(200).send()
         })
@@ -108,7 +105,15 @@ func.calculateCharge = (treatment, drug, statusTime) => {
                 charge += Number(element.drug.drugPrice) * Number(element.count)
         });
         return charge;
-    } else {
+    }
+    if (statusTime !== undefined && statusTime !== '') {
+        let charge = 0;
+        treatment.forEach(element => {
+            if (statusTime === 'ในเวลา') charge += Number(element.treat.treatInTime) * Number(element.hours)
+            else if (statusTime === 'นอกเวลา') charge += Number(element.treat.treatOutTime) * Number(element.hours)
+        });
+    }
+    else {
         return 0;
     }
 }

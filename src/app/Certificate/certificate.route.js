@@ -1,7 +1,8 @@
 const express = require('express') // create constant value for use express libary 
 const router = express.Router() // create constant value for use Router by express libary
-const lib = require('../Library/pdfmake/pdf-certificate');
+const cer = require('../Library/pdfmake/pdf-certificate');
 const service = require('./certificate.service');
+var path = require('path');
 
 router.get('/certificate', (req, res) => {
     service.call().then((listCertificate) => {
@@ -14,14 +15,21 @@ router.get('/certificate/:id', (req, res) => {
     })
 });
 router.get('/certificate/getpdf/:id', (req, res) => {
-    service.call().then((certificate) => {
-        lib.document(certificate);
-        res.json({})
+    let pdfCer = __dirname +'/pdf-certificate/' + req.params.id + '.pdf';
+    res.setHeader("Content-Type","application/pdf");
+    res.sendFile(pdfCer)
+        
+    });
+
+router.post('/certificate/createpdf',  (req, res) => {
+    service.call().then(async(certificate) => {
+        let pdf = [];
+        await cer.document(pdf , res);
         
     });
 });
 router.post('/certificate', (req, res) => {
-    service.create(req.body).then((certificate) => { // req.body is all-subject data at user new entered.  
+    service.create(req.body).then((certificate) => {
         res.json(certificate) // response data with JSON.
     });
 });
