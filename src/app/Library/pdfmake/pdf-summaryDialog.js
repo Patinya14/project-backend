@@ -11,8 +11,7 @@ var font = {
     }
 };
 
-library.document = (summary) => {
-
+library.document = (summary, res) => {
     var printer = new PdfPrinter(font);
     var documentPdf = {
         pageOrientation: 'landscape',
@@ -21,24 +20,34 @@ library.document = (summary) => {
             {
                 text: 'รายละเอียด: ข้อมูลสรุปความเจ็บป่วย', fontSize: 22, bold: true, margin: [0, 0, 0, 8]
             },
-            { margin: [50, 5, 0, 0], fontSize: 16, text: 'วันที่ :' }, { margin: [150, -20, 0, 0], fontSize: 16, text: dialog.showDate(summary[0].date) },
-            { margin: [50, 5, 0, 0], fontSize: 16, text: 'อาการโรค :' }, { margin: [150, -20, 0, 0], fontSize: 16, text: summary[0].disease.disName },
-            { margin: [50, 5, 0, 0], fontSize: 16, text: 'หัตถการ :' }, { margin: [150, -20, 0, 0], fontSize: 16, text: summary[0].disease.disProcedure },
-            // { margin: [50, 0, 0, 0], fontSize: 16, text: 'วิธีการรักษา : ' }, summary[0].treat[0].treatMents,
-            { margin: [50, 5, 0, 0], fontSize: 16, text: 'ช่วงเวลาการรักษา :' }, { margin: [150, -20, 0, 0], fontSize: 16, text: summary[0].statusTime },
-            // { margin: [50, 0, 0, 0], fontSize: 16, text: 'จ่ายยา :' }, summary[0].drug[0].drugName,
-            { margin: [50, 5, 0, 0], fontSize: 16, text: 'ผู้รักษา :' }, { margin: [150, -20, 0, 0], fontSize: 16, text: summary[0].treater.trePhysicianName + ' ' + summary[0].treater.trePhysicianSurName },
-            { margin: [50, 5, 0, 0], fontSize: 16, text: 'ผู้ตรวจ :' }, { margin: [150, -20, 0, 0], fontSize: 16, text: summary[0].officer.ficerName + ' ' + summary[0].officer.ficerSurName }
+            { margin: [50, 5, 0, 0], fontSize: 16, text: 'วันที่ :' }, { margin: [150, -20, 0, 0], fontSize: 16, text: summary.date },
+            { margin: [50, 5, 0, 0], fontSize: 16, text: 'อาการโรค :' }, { margin: [150, -20, 0, 0], fontSize: 16, text: summary.disease.disName },
+            { margin: [50, 5, 0, 0], fontSize: 16, text: 'หัตถการ :' }, { margin: [150, -20, 0, 0], fontSize: 16, text: summary.disease.disProcedure },
+            { margin: [50, 0, 0, 0], fontSize: 16, text: 'วิธีการรักษา : ' },{margin: [150, -20, 0, 0], fontSize: 16,text: dialog.printTreatment(summary.treatment)},
+            { margin: [50, 5, 0, 0], fontSize: 16, text: 'ช่วงเวลาการรักษา :' }, { margin: [150, -20, 0, 0], fontSize: 16, text: summary.statusTime },
+            { margin: [50, 0, 0, 0], fontSize: 16, text: 'จ่ายยา :' }, {margin: [150, -20, 0, 0], fontSize: 16,text:dialog.printDrug(summary.countDrugs)},
+            { margin: [50, 5, 0, 0], fontSize: 16, text: 'ผู้รักษา :' }, { margin: [150, -20, 0, 0], fontSize: 16, text: summary.treater.trePhysicianName + ' ' + summary.treater.trePhysicianSurName },
+            { margin: [50, 5, 0, 0], fontSize: 16, text: 'ผู้ตรวจ :' }, { margin: [150, -20, 0, 0], fontSize: 16, text: summary.officer.ficerName + ' ' + summary.officer.ficerSurName }
         ]
     };
     var pdfDoc = printer.createPdfKitDocument(documentPdf);
-    pdfDoc.pipe(fs.createWriteStream('app/Summary/pdfs-summary/summaryDialog.pdf'));
+    pdfDoc.pipe(res);
     pdfDoc.end();
 }
-dialog.showDate = (date) => {
-    let year = String(Number(String(date).substr(0, 4)) + 543);
-    let month = String(date).substr(5, 2);
-    let day = String(date).substr(8, 2);
-    return day + '/' + month + '/' + year;
+
+dialog.printTreatment = (treatment) => {
+    let text = '';
+    treatment.forEach(element => {
+        if (element.treat.treatMents !== '' && element.treat.treatMents !== undefined) text += element.treat.treatMents + ' '
+    });
+    return text
+}
+
+dialog.printDrug = (countdrug) => {
+    let text = '';
+    countdrug.forEach(element => {
+        if (element.drug.drugName !== '' && element.count !== null) text += element.drug.drugName + '(' + element.count + ') '
+    });
+    return text
 }
 module.exports = library;

@@ -14,19 +14,10 @@ router.get('/certificate/:id', (req, res) => {
         res.json(certificate);
     })
 });
-router.get('/certificate/getpdf/:id', (req, res) => {
-    let pdfCer = __dirname +'/pdf-certificate/' + req.params.id + '.pdf';
-    res.setHeader("Content-Type","application/pdf");
-    res.sendFile(pdfCer)
-        
-    });
 
-router.post('/certificate/createpdf',  (req, res) => {
-    service.call().then(async(certificate) => {
-        let pdf = [];
-        await cer.document(pdf , res);
-        
-    });
+router.post('/certificate/createpdf', async (req, res) => {
+    let pdf = [];
+    await cer.document(req.body, res);
 });
 router.post('/certificate', (req, res) => {
     service.create(req.body).then((certificate) => {
