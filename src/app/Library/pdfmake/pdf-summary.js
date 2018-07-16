@@ -34,7 +34,7 @@ library.document = async (summary, filename,res) => {
     };
 
     var pdfDoc = printer.createPdfKitDocument(documentPdf)
-    pdfDoc.pipe(res);//fs.createWriteStream('app/Summary/pdf-summary/' + filename + '.pdf'));
+    pdfDoc.pipe(res);
     return pdfDoc.end();
 }
 
@@ -60,6 +60,7 @@ table.createTable = (summary) => {
         row.push(textTreat)
         let textDrugs = '';
         sum.countDrugs.forEach(element => {
+            if( element.drug.drugName !== undefined &&  element.count !== null)
             textDrugs += element.drug.drugName + '(' + element.count + ')' + '\n'
         })
         row.push(textDrugs);

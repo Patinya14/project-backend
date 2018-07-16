@@ -1,6 +1,7 @@
 const express = require('express') // create constant value for use express libary 
 const router = express.Router() // create constant value for use Router by express libary
 const lib = require('../Library/pdfmake/pdf-summary');
+const dia = require('../Library/pdfmake/pdf-summaryDialog');
 const service = require('./summary.service');
 var path = require('path');
 let func = {}
@@ -28,12 +29,6 @@ router.get('/summary/:id', (req, res) => {
     });
 });
 
-router.get('/summary/getpdf/:id', (req, res) => {
-    let pdf = __dirname + '/pdf-summary/' + req.params.id + '.pdf';
-    res.setHeader("Content-Type", "application/pdf");
-    res.sendFile(pdf)
-});
-
 router.post('/summary/createpdf', async (req, res) => {
     let reqdate = String(req.body.year - 543) + '-' + String(func.convertMonth(req.body.month));
     let filename = reqdate;
@@ -46,10 +41,14 @@ router.post('/summary/createpdf', async (req, res) => {
             if (pdf.length > 0) {
                 await lib.document(pdf, filename, res);
             }
-            // res.status(200).send()
         })
     });
 });
+
+router.post('/summary/createpdfDialog', async (req, res) => {
+    await dia.document(req.body, res);
+});
+
 router.post('/summary', (req, res) => {
     service.create(req.body).then((summary) => {
         res.json(summary) // response data with JSON.
@@ -69,9 +68,10 @@ func.formatSummary = async (summary) => {
     let data = []
     for (let i = 0; i < summary.length; i++) {
         let status = await service.find(summary[i].personId._id).then(cursor => {
-            if (cursor.length > 1) return 'ผู้ป่วยรายเก่า';
+            if (cursor.length > 1 && String(cursor[cursor.length-1]._id) !== String(summary[i]._id)) return 'ผู้ป่วยรายเก่า';
             else return 'ผู้ป่วยรายใหม่';
-        })
+        }) 
+
         data.push(func.pushSummary(summary[i], status))
     }
     return data
@@ -135,5 +135,9 @@ func.convertMonth = (month) => {
         default: return "0"
     }
 }
+
+
+
+
 
 module.exports = router
