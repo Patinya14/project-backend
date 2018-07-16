@@ -1,4 +1,4 @@
-const PdfPrinter = require('pdfmake');
+const pdfMake = require('pdfmake');
 const fs = require('fs');
 let library = {};
 let cer = {}
@@ -11,8 +11,8 @@ var font = {
     }
 };
 
-library.document = (certificate) => {
-    var printer = new PdfPrinter(font);
+library.document =async (certificate , res) => {
+    var printer = new pdfMake(font);
     var documentPdf = {
         pageSize: 'A5',
         content: [
@@ -43,7 +43,7 @@ library.document = (certificate) => {
         ]
     };
     var pdfDoc = printer.createPdfKitDocument(documentPdf);
-    pdfDoc.pipe(fs.createWriteStream('app/Certificate/pdfs-certificate/certificate.pdf'));
+    pdfDoc.pipe(res);
     pdfDoc.end();
 }
 cer.showDate = (date) => {
