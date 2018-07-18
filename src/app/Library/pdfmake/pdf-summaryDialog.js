@@ -25,9 +25,9 @@ library.document = (summary, res) => {
             { margin: [50, 5, 0, 0], fontSize: 16, text: 'หัตถการ :' }, { margin: [150, -20, 0, 0], fontSize: 16, text: summary.disease.disProcedure },
             { margin: [50, 0, 0, 0], fontSize: 16, text: 'วิธีการรักษา : ' },{margin: [150, -20, 0, 0], fontSize: 16,text: dialog.printTreatment(summary.treatment)},
             { margin: [50, 5, 0, 0], fontSize: 16, text: 'ช่วงเวลาการรักษา :' }, { margin: [150, -20, 0, 0], fontSize: 16, text: summary.statusTime },
-            { margin: [50, 0, 0, 0], fontSize: 16, text: 'จ่ายยา :' }, {margin: [150, -20, 0, 0], fontSize: 16,text:dialog.printDrug(summary.countDrugs)},
             { margin: [50, 5, 0, 0], fontSize: 16, text: 'ผู้รักษา :' }, { margin: [150, -20, 0, 0], fontSize: 16, text: summary.treater.trePhysicianName + ' ' + summary.treater.trePhysicianSurName },
-            { margin: [50, 5, 0, 0], fontSize: 16, text: 'ผู้ตรวจ :' }, { margin: [150, -20, 0, 0], fontSize: 16, text: summary.officer.ficerName + ' ' + summary.officer.ficerSurName }
+            { margin: [50, 5, 0, 0], fontSize: 16, text: 'ผู้ตรวจ :' }, { margin: [150, -20, 0, 0], fontSize: 16, text: summary.officer.ficerName + ' ' + summary.officer.ficerSurName },
+            { margin: [50, 0, 0, 0], fontSize: 16, text: 'จ่ายยา :' }, {margin: [150, -20, 0, 0], fontSize: 16,text:dialog.printDrug(summary.countDrugs)},
         ]
     };
     var pdfDoc = printer.createPdfKitDocument(documentPdf);

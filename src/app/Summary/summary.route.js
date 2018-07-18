@@ -7,18 +7,9 @@ var path = require('path');
 let func = {}
 
 router.get('/summary', (req, res) => {
-    service.call().then((summary) => {
-        (async () => {
-            let data = []
-            for (let i = 0; i < summary.length; i++) {
-                let status = await service.find(summary[i].personId._id).then(cursor => {
-                    if (cursor.length > 1) return 'ผู้ป่วยรายเก่า';
-                    else return 'ผู้ป่วยรายใหม่';
-                })
-                data.push(func.pushSummary(summary[i], status))
-            }
-            res.json(data)
-        })();
+    service.call().then(async (summary) => {
+        let data = await func.formatSummary(summary)
+        res.json(data)
     });
 });
 
@@ -68,9 +59,9 @@ func.formatSummary = async (summary) => {
     let data = []
     for (let i = 0; i < summary.length; i++) {
         let status = await service.find(summary[i].personId._id).then(cursor => {
-            if (cursor.length > 1 && String(cursor[cursor.length-1]._id) !== String(summary[i]._id)) return 'ผู้ป่วยรายเก่า';
+            if (cursor.length > 1 && String(cursor[cursor.length - 1]._id) !== String(summary[i]._id)) return 'ผู้ป่วยรายเก่า';
             else return 'ผู้ป่วยรายใหม่';
-        }) 
+        })
 
         data.push(func.pushSummary(summary[i], status))
     }
